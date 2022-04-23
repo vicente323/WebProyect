@@ -1,7 +1,5 @@
 
 
-
-
 const {mongoose}=require("./mongo-db-connect")
 const {nanoid}= require("nanoid")
 
@@ -50,8 +48,6 @@ let productsSchema= mongoose.Schema({
 
 
 
-const product = mongoose.model("Products",productsSchema)
-
 async function saveProduct(){
     
     
@@ -84,12 +80,18 @@ async function findProducts(query){
 }
 
 
-
 productsSchema.statics.getAllProducts=async ()=>{
 
-    return await  product.find()
+    return await  product.find({},{name:1, _id:0})
 
 }
+
+const product = mongoose.model("Products",productsSchema)
+
+
 // saveProduct()
 
 // findProducts()
+
+
+module.exports={product}
