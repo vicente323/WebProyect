@@ -1,0 +1,17 @@
+@host=http://localhost:3100
+
+###
+
+POST {{host}}/products   
+Content-Type: application/json
+
+{
+ 
+    "name":"Funko",
+    "description":"Americano",
+    "category":"Test description",
+    "price":29,
+    "stock":5
+
+  
+}

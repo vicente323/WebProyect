@@ -15,6 +15,14 @@ let productsSchema= mongoose.Schema({
         unique:true
 
     },
+    productOwner:{
+        type:String,
+        required:true,
+       
+
+
+
+    },
     name:{
         type:String,
         required:true
@@ -53,7 +61,8 @@ async function saveProduct(){
     
     let newProduct = {
         id:nanoid(),
-        name:"TestProduct1",
+        name:"TestProduct0",
+        productOwner:"testing",
         price:1,
         stock:1,
         category:"testing",
@@ -78,20 +87,32 @@ async function findProducts(query){
     let products = await  product.find({},{name:1})
     console.log(products)
 }
+// ! add db methods here
 
+productsSchema.statics.getProducts=async (query)=>{
+    //* query is an object 
+    return await  product.find( query)
 
-productsSchema.statics.getAllProducts=async ()=>{
+}
+productsSchema.statics.setProduct= async(product)=>{
 
-    return await  product.find({},{name:1, _id:0})
+ product.id=nanoid()
+ product.QA=""
+ let prodToSave= product(newProduct)
+ let resp = await prodToSave.save()
+ console.log(resp)
+ 
+
 
 }
 
 const product = mongoose.model("Products",productsSchema)
 
+// async function deleteFromDb(){
 
+//     await product.findOneAndDelete({id:"vJNqOzI2iMZ6Zaf5o7tRq"})
+// }
+//deleteFromDb()
 // saveProduct()
-
-// findProducts()
-
 
 module.exports={product}
