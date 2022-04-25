@@ -4,6 +4,7 @@
 
 POST {{host}}/products   
 Content-Type: application/json
+productOwner: testing
 
 {
  
@@ -15,3 +16,7 @@ Content-Type: application/json
 
   
 }
+
+###
+
+GET {{host}}/products

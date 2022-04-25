@@ -7,7 +7,7 @@ const {nanoid}= require("nanoid")
 //* definition of products schema
 
 let productsSchema= mongoose.Schema({
-
+    //TODO Agregar descipcion a los productos
     id:{
         
         type:String,
@@ -94,10 +94,10 @@ productsSchema.statics.getProducts=async (query)=>{
     return await  product.find( query)
 
 }
-productsSchema.statics.setProduct= async(product)=>{
+productsSchema.statics.addProduct= async(newProduct)=>{
 
- product.id=nanoid()
- product.QA=""
+ newProduct.id=nanoid()
+ newProduct.QA=""
  let prodToSave= product(newProduct)
  let resp = await prodToSave.save()
  console.log(resp)
