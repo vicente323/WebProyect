@@ -1,11 +1,8 @@
-
-
 const {mongoose}=require("./mongo-db-connect")
 const {nanoid}= require("nanoid")
 
 
 //* definition of products schema
-
 let productsSchema= mongoose.Schema({
     //TODO Agregar descipcion a los productos
     id:{
