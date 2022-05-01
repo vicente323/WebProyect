@@ -1,5 +1,5 @@
 
-const {product}= require("./product")
+const {product}= require("./db/product")
 const express= require("express")
 const fs= require("fs");
 
