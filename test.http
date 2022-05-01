@@ -8,15 +8,37 @@ productOwner: testing
 
 {
  
-    "name":"Funko",
-    "description":"Americano",
+    "name":"Funko testing",
+    "description":"Funko test",
     "category":"Test description",
-    "price":29,
-    "stock":5
+    "price":290,
+    "stock":25
 
   
 }
 
 ###
 
-GET {{host}}/products
+GET {{host}}/products?max=300&min=100
+
+
+
+###
+DELETE {{host}}/products/6264c4e7e24feb9ddb4a3d66
+
+###
+
+PUT {{host}}/products/6264c4c1c4104d11a58c49f4
+Content-Type: application/json
+
+
+{
+ 
+    "name":"Funko testing desde el put",
+    "description":"Funko test desde el put",
+    "category":"Test description desde el put",
+    "price":290,
+    "stock":25
+
+  
+}

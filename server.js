@@ -2,7 +2,7 @@
 const {product}= require("./product")
 const express= require("express")
 const fs= require("fs");
-const { query } = require("express");
+
 const port= 3100;
 const app= express()
 app.use(express.json())
@@ -34,6 +34,7 @@ app.get('/products', async (req,res)=>{
     //todo: Implement a regex for min and max 
     let {name,category,min,max,id}=req.query;
     let dbQuery={}
+    let minMaxQuery={}
     if(id){
         dbQuery.id=id
     }
@@ -46,11 +47,15 @@ app.get('/products', async (req,res)=>{
         dbQuery.category=new RegExp(category,'i')
     }
     if(max){
+        minMaxQuery.$lte=max
+        dbQuery.price=minMaxQuery
        
     }
     if(min){
-
+        minMaxQuery.$gte=min
+        dbQuery.price=minMaxQuery
     }
+    console.log(dbQuery)
     products=  await product.getProducts(dbQuery)
     
     // * this function is async due to mongodb request  
@@ -63,8 +68,48 @@ app.get('/products', async (req,res)=>{
 
 
 
+app.delete('/products/:id' ,async (req,res)=>{
+    console.log("--------delete--------")
+    console.log(req.params.id)
+    let ret = await product.deletePoduct(req.params.id);
+    
+    if (ret){
 
+        res.status(200).send(ret)
+        return
+    }
+    res.status(404).send({error:"Notfound"})
+})
 
+app.put('/products/:id',async (req,res)=>{
+    console.log("------Put------")
+    let{name,price,description,category,stock}=req.body;
+
+   // let productowner=headers.productowner //! Tenemos que validar en la base de datos que exista el product owner 
+    if(name&&price&&description&&category&&stock){
+
+        let productUpdated=req.body
+       // productUpdated.productOwner=productowner
+
+  
+        let ret=await product.updateProduct(req.params.id,productUpdated)
+        if(ret){
+                res.send(ret)
+                return
+        }
+        else{
+            res.status(404).send({error:"Notfound"})
+            return
+
+        }
+        
+        
+    }   
+    
+    res.status(404).send({error:"Notfound"})
+ 
+
+})
 
 
 
