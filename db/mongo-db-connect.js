@@ -4,7 +4,7 @@ const mongoose =require("mongoose")
 
 const mongoUrl=initialConfig.getUrl()
 
-    console.log(mongoUrl)
+    
     
     mongoose.connect(mongoUrl,{
 

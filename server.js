@@ -75,46 +75,8 @@ app.get('/products', async (req, res) => {
 
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////
-////////////////
-////////////////                             Usuarios
-////////////////
-////////////////
-////////////////
-////////////////
 
 
-app.get('/users', async (req, res) => {
-    console.log(req.query);
-    console.log(req.userId);
-    
-    let { name, username } = req.query;
-    let users = await User.getUsers();
-    res.send(users);
-})
-
-app.get('/users/:id', async (req, res) => {
-    console.log(req.params.id);
-    let user = await User.getUser(req.params.id);
-
-    if (user) {
-        res.send(user)
-    } else {
-        res.status(404).send({ error: " no encontrado" })
-    }
-})
-
-app.delete('/users/:id', async (req, res) => {
-    console.log(req.params.id);
-    let user = await User.deleteUser(req.params.id);
-
-    if (user) {
-        res.send(user)
-    } else {
-        res.status(404).send({ error: " no encontrado" })
-    }
-})
 
 
 
@@ -162,6 +124,85 @@ app.put('/products/:id',async (req,res)=>{
  
 
 })
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////
+////////////////
+////////////////                             Usuarios
+////////////////
+////////////////
+////////////////
+////////////////
+
+
+app.get('/users', async (req, res) => {
+    console.log(req.query);
+    console.log(req.userId);
+    
+    let { name, username } = req.query;
+    let users = await User.getUsers();
+    res.send(users);
+})
+
+app.get('/users/:id', async (req, res) => {
+    console.log(req.params.id);
+    let user = await User.getUser(req.params.id);
+
+    if (user) {
+        res.send(user)
+    } else {
+        res.status(404).send({ error: " no encontrado" })
+    }
+})
+
+app.delete('/users/:id', async (req, res) => {
+    console.log(req.params.id);
+    let user = await User.deleteUser(req.params.id);
+
+    if (user) {
+        res.send(user)
+    } else {
+        res.status(404).send({ error: " no encontrado" })
+    }
+})
+
+
+app.post('/users', async (req, res) => {
+    console.log(req.body);
+    let newUser = {};
+    let { name, email, username, password } = req.body;
+
+    if (name && email && username) {
+        newUser.name = name;
+        newUser.email = email;
+        newUser.username = username;
+        newUser.password = password;
+        let doc = await User.saveUser(newUser);
+        res.status(201).send(doc);
+    } else {
+        res.status(400).send("Faltan datos")
+    }
+})
+
+app.put('/users/:id', async (req, res) => {
+
+    let user = await User.getUser(req.params.id);
+    let { name, username, email, password } = req.body;
+    if (user) {
+        user.name = name ? name : user.name;
+        user.username = username ? username : user.username;
+        user.email = email ? email : user.email;
+        user.password = password ? password : user.password;
+        let doc = await User.updateUser(user);
+        res.send(doc);
+    } else {
+        res.status(404).send({ error: "no existe" })
+    }
+})
+
+
 
 
 
