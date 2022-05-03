@@ -1,4 +1,5 @@
 @host=http://localhost:3100
+@id = c5O7tMsGoRKP2oy8u7w56
 
 ###
 
@@ -7,18 +8,46 @@ Content-Type: application/json
 productOwner: testing
 
 {
+<<<<<<< HEAD
  
     "name":"Funko testing",
     "description":"Funko test",
     "category":"Test description",
     "price":290,
     "stock":25
+=======
+    "name":"Funko",
+    "description":"Americano",
+    "category":"Test description",
+    "price":29,
+    "stock":5
+}
 
-  
+
+###
+
+GET {{host}}/products
+
+###
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+GET {{host}}/users
+
+###
+POST {{host}}/users
+Content-Type: application/json
+>>>>>>> c2fb672e20da35cc1ce5c7f2c52660e462d30200
+
+{
+    "name": "Lupe gomez",
+    "email":"lupita@test.com",
+    "username": "Lalupe32",
+    "password" : "epepe"
 }
 
 ###
 
+<<<<<<< HEAD
 GET {{host}}/products?max=300&min=100
 
 
@@ -42,3 +71,19 @@ Content-Type: application/json
 
   
 }
+=======
+PUT {{host}}/users/{{id}}
+Content-Type: application/json
+
+{
+    "name": "Jaime el duende 2.0",
+    "email":"JaimeDuene@test.com",
+    "username": "Jaime Duende de Jesus Rodriguez",
+    "password" : "password"
+}
+###
+DELETE {{host}}/users/{{id}}
+x-user: myAdminToken
+
+###
+>>>>>>> c2fb672e20da35cc1ce5c7f2c52660e462d30200
