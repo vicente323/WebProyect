@@ -1,5 +1,5 @@
 @host=http://localhost:3100
-@id = c5O7tMsGoRKP2oy8u7w56
+@id = eO-kK7jSKoAyyp989C19J
 
 ###
 
@@ -26,13 +26,16 @@ GET {{host}}/products
 GET {{host}}/users
 
 ###
+GET {{host}}/users/{{id}}
+
+###
 POST {{host}}/users
 Content-Type: application/json
 
 {
     "name": "Lupe gomez",
-    "email":"lupita@test.com",
-    "username": "Lalupe32",
+    "email":"lupitada@test.com",
+    "username": "Lalupe321",
     "password" : "epepe"
 }
 
