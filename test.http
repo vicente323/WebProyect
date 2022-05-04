@@ -9,8 +9,8 @@ productOwner: testing
 
 {
  
-    "name":"Funko testing5",
-    "description":"Funko test5",
+    "name":"Test para video",
+    "description":"Juguete",
     "category":"Test description2",
     "price":2900,
     "stock":2
@@ -25,16 +25,16 @@ GET {{host}}/products?max=300&min=100
 GET {{host}}/products
 
 ###
-DELETE {{host}}/products/HH7DnbhqrKUQSRqnmC81f
+DELETE {{host}}/products/X58A3gwas6ZPX9cKY2NP5
 
 ###
 
-PUT {{host}}/products/6271a9bf5dd6f0b5422bf80b
+PUT {{host}}/products/6264c4c1c4104d11a58c49f4
 Content-Type: application/json
 
 {
  
-    "name":"Nuevo Funko 2.0",
+    "name":"Nuevo Funko 3.0",
     "description":"Nuevo pubto 2.0",
     "category":"Juguetillos",
     "price":290,
@@ -52,7 +52,7 @@ Content-Type: application/json
 GET {{host}}/users
 
 ###
-GET {{host}}/users/-g1OAX1tO1eRrQY-xREGE
+GET {{host}}/users/DVE34KeKHT9rD7NGoEM7H
 
 ###
 
@@ -66,24 +66,24 @@ POST {{host}}/users
 Content-Type: application/json
 
  {
-    "name": "Frailejon Hernesto Perez",
-    "username": "FrailejonHP",
-    "email": "frailejon@test.com",
+    "name": "Frailejon Hernesto Perez 2",
+    "username": "FrailejonHP2",
+    "email": "frailejon2@test.com",
     "password": "Cuidar el Awa"
   }
 
 ###
 
-  PUT {{host}}/users/fgyzNOVUtNxmgmcLp4XXk
+  PUT {{host}}/users/DVE34KeKHT9rD7NGoEM7H
 Content-Type: application/json
 
  {
-    "name": "Ternure68",
-    "username": "ternure48lacuerpa",
-    "email": "frailejon@test.com",
+    "name": "Ternure628",
+    "username": "ternure428lacuerpa",
+    "email": "frailejon2@test.com",
     "password": "NuevoPassword"
   }
 
 ###
 
-DELETE {{host}}/users/fgyzNOVUtNxmgmcLp4XXk
+DELETE {{host}}/users/DVE34KeKHT9rD7NGoEM7H
