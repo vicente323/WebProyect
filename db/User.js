@@ -36,6 +36,12 @@ let usersSchema = mongoose.Schema(
     }
 )
 
+usersSchema.statics.login=async(username)=>{
+
+        let filtro= {username:username}
+
+        return await User.find(filtro);
+}
 
 
 usersSchema.statics.getUsers = async (filtro, isAdmin) => {

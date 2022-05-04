@@ -8,7 +8,8 @@ const port = 3100;
 const app = express()
 
 const shortid = require("shortid");
-
+const jwt=require("jsonwebtoken");
+const { compareHash } = require("./utils/crypt");
 
 //const { auth, validarUsuario, requireAdmin } = require("./middlewares/auth");
 
@@ -135,6 +136,50 @@ app.put('/products/:id',async (req,res)=>{
 ////////////////
 ////////////////
 ////////////////
+
+/*
+    todo: Add login endpoint
+
+
+*/
+
+app.post('/login',async(req,res)=>{
+    const firma= "DASW"
+    let{username,password}=req.headers;
+    
+    let resp= await User.login(username);
+    let user=resp[0]
+    
+  
+
+   
+
+    if(resp){
+        if( await compareHash(password,user.password)){
+           
+
+            let token =jwt.sign({username:user.username,email:user.email},firma,{expiresIn:60*40});
+            
+            res.status(202).send({token});
+
+        }
+        else{
+
+            res.status(404).send({error:"Username or password not valid"});
+        }
+       
+       
+    }
+    else{
+
+        res.status(404).send({error:"Username or password not valid"});
+    }
+    
+   
+
+
+})
+
 
 
 app.get('/users', async (req, res) => {
