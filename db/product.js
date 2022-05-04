@@ -99,6 +99,13 @@ productsSchema.statics.deletePoduct = async (id) => {
     
     return await product.findOneAndDelete({ id })
 }
+
+
+
+
+
+
+
 productsSchema.statics.updateProduct = async (id, updatedProduct) => {
 
 

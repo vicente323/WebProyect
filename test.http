@@ -29,14 +29,14 @@ DELETE {{host}}/products/HH7DnbhqrKUQSRqnmC81f
 
 ###
 
-PUT {{host}}/products/X58A3gwas6ZPX9cKY2NP5
+PUT {{host}}/products/6271a9bf5dd6f0b5422bf80b
 Content-Type: application/json
 
 {
  
-    "name":"Funko modificado",
-    "description":"Funko test desde el put",
-    "category":"Test description desde el put",
+    "name":"Nuevo Funko 2.0",
+    "description":"Nuevo pubto 2.0",
+    "category":"Juguetillos",
     "price":290,
     "stock":25
 
