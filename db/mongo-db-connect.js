@@ -1,21 +1,20 @@
-const initialConfig = require("./config")
-const mongoose = require("mongoose")
 
-const mongoUrl = initialConfig.getUrl()
-console.log(mongoUrl)
+const initialConfig= require("./dbConfig")
+const mongoose =require("mongoose")
 
-mongoose.connect(mongoUrl, {
-    useNewUrlParser: true
-}).then(() => {
+const mongoUrl=initialConfig.getUrl()
 
-    console.log("conected to products db sucsessfully ");
+    
+    
+    mongoose.connect(mongoUrl,{
 
-}).catch((err) => {
-    console.log("Connection to product db failed", err)
-})
+        useNewUrlParser:true
+        
+    }).then(()=>{
 
+        console.log("conected to products db sucsessfully ")
+    }).catch((err)=>{
+        console.log("An error has happened",err)
+    })
 
-
-
-
-module.exports = { mongoose }
+    module.exports={mongoose}

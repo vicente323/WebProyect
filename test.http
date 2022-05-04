@@ -8,50 +8,50 @@ Content-Type: application/json
 productOwner: testing
 
 {
-    "name":"Funko",
-    "description":"Americano",
-    "category":"Test description",
-    "price":29,
-    "stock":5
-}
+ 
+    "name":"Funko testing2",
+    "description":"Funko tes2t",
+    "category":"Test description2",
+    "price":2900,
+    "stock":2
 
+}
+###
+
+GET {{host}}/products?max=300&min=100
 
 ###
 
 GET {{host}}/products
 
 ###
-//////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
-GET {{host}}/users
+DELETE {{host}}/products/6264c4e7e24feb9ddb4a3d66
 
 ###
 GET {{host}}/users/{{id}}
 
 ###
 POST {{host}}/users
+
+PUT {{host}}/products/6264c4c1c4104d11a58c49f4
 Content-Type: application/json
+
 
 {
     "name": "Lupe gomez",
     "email":"lupitada@test.com",
     "username": "Lalupe321",
     "password" : "epepe"
+ 
+    "name":"Funko testing desde el put",
+    "description":"Funko test desde el put",
+    "category":"Test description desde el put",
+    "price":290,
+    "stock":25
+
+  
 }
 
 ###
 
-PUT {{host}}/users/{{id}}
-Content-Type: application/json
-
-{
-    "name": "Jaime el duende 2.0",
-    "email":"JaimeDuene@test.com",
-    "username": "Jaime Duende de Jesus Rodriguez",
-    "password" : "password"
-}
-###
-DELETE {{host}}/users/{{id}}
-x-user: myAdminToken
-
-###
+GET {{host}}/users

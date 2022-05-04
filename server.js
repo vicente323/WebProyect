@@ -13,7 +13,7 @@ const shortid = require("shortid");
 //const { auth, validarUsuario, requireAdmin } = require("./middlewares/auth");
 
 
-app.use(express.json())
+ app.use(express.json())
 
 // ! Import middlewares here 
 app.post('/products', async (req, res) => {
@@ -40,10 +40,11 @@ app.get('/products', async (req, res) => {
     console.log("--------Get--------")
     let products;
     //todo: Implement a regex for min and max 
-    let { name, category, min, max, id } = req.query;
-    let dbQuery = {}
-    if (id) {
-        dbQuery.id = id
+    let {name,category,min,max,id}=req.query;
+    let dbQuery={}
+    let minMaxQuery={}
+    if(id){
+        dbQuery.id=id
     }
     if (name) {
 
@@ -53,18 +54,74 @@ app.get('/products', async (req, res) => {
 
         dbQuery.category = new RegExp(category, 'i')
     }
-    if (max) {
-
+    if(max){
+        minMaxQuery.$lte=max
+        dbQuery.price=minMaxQuery
+       
     }
-    if (min) {
-
+    if(min){
+        minMaxQuery.$gte=min
+        dbQuery.price=minMaxQuery
     }
-    products = await product.getProducts(dbQuery)
-
+    console.log(dbQuery)
+    products=  await product.getProducts(dbQuery)
+    
     // * this function is async due to mongodb request  
 
     res.send(products)
 
+
+})
+
+
+
+
+
+
+
+
+
+
+app.delete('/products/:id' ,async (req,res)=>{
+    console.log("--------delete--------")
+    console.log(req.params.id)
+    let ret = await product.deletePoduct(req.params.id);
+    
+    if (ret){
+
+        res.status(200).send(ret)
+        return
+    }
+    res.status(404).send({error:"Notfound"})
+})
+
+app.put('/products/:id',async (req,res)=>{
+    console.log("------Put------")
+    let{name,price,description,category,stock}=req.body;
+
+   // let productowner=headers.productowner //! Tenemos que validar en la base de datos que exista el product owner 
+    if(name&&price&&description&&category&&stock){
+
+        let productUpdated=req.body
+       // productUpdated.productOwner=productowner
+
+  
+        let ret=await product.updateProduct(req.params.id,productUpdated)
+        if(ret){
+                res.send(ret)
+                return
+        }
+        else{
+            res.status(404).send({error:"Notfound"})
+            return
+
+        }
+        
+        
+    }   
+    
+    res.status(404).send({error:"Notfound"})
+ 
 
 })
 
@@ -112,16 +169,6 @@ app.delete('/users/:id', async (req, res) => {
 })
 
 
-
-
-
-app.delete('/users/:id', async (req, res) => {
-
-    let doc = await User.deleteUser();
-    res.status(404).send({ error: "no se encontró usuario" })
-
-})
-
 app.post('/users', async (req, res) => {
     console.log(req.body);
     let newUser = {};
@@ -155,7 +202,7 @@ app.put('/users/:id', async (req, res) => {
     }
 })
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 
