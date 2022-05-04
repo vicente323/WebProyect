@@ -36,8 +36,6 @@ let usersSchema = mongoose.Schema(
     }
 )
 
-
-
 usersSchema.statics.getUsers = async (filtro, isAdmin) => {
     let project = { _id: 0, id: 1, name: 1, username: 1, email: 1 }
     let search = { $or: filtro }
@@ -70,41 +68,5 @@ usersSchema.statics.saveUser = async (user) => {
 
 const User = mongoose.model("User", usersSchema);
 
-////////////////////////////////////////////////////////////////////////////////////////////
-async function saveUser() {
-    let newUser = {
-        id: nanoid(),
-        name: "elTercero",
-        username: "TercerUser",
-        email: "Tercer@TextDecoderStream.com",
-        password: "123456"
-    }
-
-    let userToSave = User(newUser);
-
-    
-    console.log(resp);
-
-}
-
-//saveUser();
-
-async function getUsers() {
-    let users = await User.find();
-    console.log(users);
-    let users2 = await User.find({}, { _id: 0, id: 1, name: 1 });
-    console.log(users2);
-}
-
-//getUsers();
-
-function updatePasswordAllUsers() {
-    let users = User.find();
-    users.forEach(async usr => {
-        usr.password = await getHash(usr.password);
-        User.updateUser({ id: usr.id }, { password: usr.password });
-    })
-}
-
-//updatePasswordAllUsers();
 module.exports = { User }
+

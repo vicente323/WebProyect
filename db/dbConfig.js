@@ -1,9 +1,4 @@
 
-/** 
-    * * Configures the basics of products
-    * *Only for products if you want access to a diferent schema change dbName or create a new db  
-
-*/
 module.exports={
 
 

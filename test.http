@@ -1,5 +1,5 @@
 @host=http://localhost:3100
-@id = eO-kK7jSKoAyyp989C19J
+@id = c5O7tMsGoRKP2oy8u7w56
 
 ###
 
@@ -9,8 +9,8 @@ productOwner: testing
 
 {
  
-    "name":"Funko testing2",
-    "description":"Funko tes2t",
+    "name":"Funko testing5",
+    "description":"Funko test5",
     "category":"Test description2",
     "price":2900,
     "stock":2
@@ -25,25 +25,16 @@ GET {{host}}/products?max=300&min=100
 GET {{host}}/products
 
 ###
-DELETE {{host}}/products/6264c4e7e24feb9ddb4a3d66
+DELETE {{host}}/products/HH7DnbhqrKUQSRqnmC81f
 
 ###
-GET {{host}}/users/{{id}}
 
-###
-POST {{host}}/users
-
-PUT {{host}}/products/6264c4c1c4104d11a58c49f4
+PUT {{host}}/products/X58A3gwas6ZPX9cKY2NP5
 Content-Type: application/json
 
-
 {
-    "name": "Lupe gomez",
-    "email":"lupitada@test.com",
-    "username": "Lalupe321",
-    "password" : "epepe"
  
-    "name":"Funko testing desde el put",
+    "name":"Funko modificado",
     "description":"Funko test desde el put",
     "category":"Test description desde el put",
     "price":290,
@@ -53,5 +44,46 @@ Content-Type: application/json
 }
 
 ###
+////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
 
 GET {{host}}/users
+
+###
+GET {{host}}/users/-g1OAX1tO1eRrQY-xREGE
+
+###
+
+GET {{host}}/login
+password:asdasdasds
+username:Thebejarano
+
+###
+
+POST {{host}}/users
+Content-Type: application/json
+
+ {
+    "name": "Frailejon Hernesto Perez",
+    "username": "FrailejonHP",
+    "email": "frailejon@test.com",
+    "password": "Cuidar el Awa"
+  }
+
+###
+
+  PUT {{host}}/users/fgyzNOVUtNxmgmcLp4XXk
+Content-Type: application/json
+
+ {
+    "name": "Ternure68",
+    "username": "ternure48lacuerpa",
+    "email": "frailejon@test.com",
+    "password": "NuevoPassword"
+  }
+
+###
+
+DELETE {{host}}/users/fgyzNOVUtNxmgmcLp4XXk

@@ -3,8 +3,6 @@ const initialConfig= require("./dbConfig")
 const mongoose =require("mongoose")
 
 const mongoUrl=initialConfig.getUrl()
-
-    
     
     mongoose.connect(mongoUrl,{
 
@@ -18,3 +16,5 @@ const mongoUrl=initialConfig.getUrl()
     })
 
     module.exports={mongoose}
+
+    
