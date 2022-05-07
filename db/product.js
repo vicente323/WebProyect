@@ -20,6 +20,10 @@ let productsSchema= mongoose.Schema({
 
 
     },
+    descripcion:{
+        type:String,
+        required:true,
+    },
     name:{
         type:String,
         required:true

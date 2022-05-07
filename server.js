@@ -6,33 +6,39 @@ const fs = require("fs");
 const { query } = require("express");
 const port = 3100;
 const app = express()
-
+const {auth }=require("./middlewares/auth")
 const shortid = require("shortid");
 const jwt=require("jsonwebtoken");
 const { compareHash } = require("./utils/crypt");
 
-//const { auth, validarUsuario, requireAdmin } = require("./middlewares/auth");
+
 
 
  app.use(express.json())
 
-// ! Import middlewares here 
-app.post('/products', async (req, res) => {
+app.post('/products',auth, async (req, res) => {
     console.log("----Post product----")
+   
+    let { name, price, descripcion, category, stock } = req.body;
+    let productowner = req.username
+    console.log(productowner)
+    
+    if (name && price && descripcion && category && stock) {
 
-    let { name, price, description, category, stock } = req.body;
-    let headers = req.headers
-    let productowner = headers.productowner //! Tenemos que validar en la base de datos que exista el product owner 
-    if (name && price && description && category && stock && productowner) {
+        let prodToadd ={name:name,productOwner:req.username,price:price,stock:stock,category:category,descripcion:descripcion}
+        
 
-        let prodToadd = req.body
-        prodToadd.productOwner = productowner
 
-        // console.log(productowner)
-        // console.log("Body: ",req.body)
+        console.log("producto",prodToadd)
         await product.addProduct(prodToadd)
+        res.status(201).send({success:"product created"})
     }
+    else{
 
+        res.status(404).send({error:"bad request"})
+
+    }
+    
 
 
 })
@@ -138,7 +144,7 @@ app.put('/products/:id',async (req,res)=>{
 ////////////////
 
 /*
-    todo: Add login endpoint
+    todo: Add login endpoint  (ended)
 
 
 */
@@ -189,6 +195,10 @@ app.get('/users', async (req, res) => {
     let { name, username } = req.query;
     let users = await User.getUsers();
     res.send(users);
+
+
+
+
 })
 
 app.get('/users/:id', async (req, res) => {
@@ -251,7 +261,79 @@ app.put('/users/:id', async (req, res) => {
 
 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////
+////////////////
+////////////////                             Shopping cart    (Vicente)
+////////////////
+////////////////
+////////////////
+////////////////(
+app.get('/cart', auth,async(req,res)=>{
+
+
+
+    let query={username:req.username,email:req.email}
+    let user = await User.findUser(query)   
+    user=user[0]
+    let cart=user.carrito
+    res.send(cart).status(202)
+
+})
+
+app.put('/cart',auth,async(req,res)=>{
+    
+    
+    // * Todos los productos que se le mandan a este metodo existen en la base de datos ya que son los mismos que se despliegan desde la interface inicial 
+
+    // * Este metodo recibe un token dado por el usuario pada validar su login y tener sus datos 
+    let {productID,cant}=req.body;
+    
+    
+    console.log(productID,cant);
+
+    // * Una vez que validamos el login en la req tenemos disponible  req.email y  req.username
+    let query={username:req.username,email:req.email}
+    let user = await User.findUser(query)
+    // console.log(user)
+
+    user=user[0]
+
+    let cart=user.carrito
+    // console.log(cart)
+
+    // * Este cart funciona como un proxy ya que se tiene solo los id's y las cantidades 
+
+    let exist=false;
+    cart.map(prd=>{
+
+
+            if(prd.producto==productID){
+                
+                prd.cantidad=prd.cantidad+cant;
+                exist=true;
+            }
+
+
+
+    })
+    if(!exist)cart.push({producto:productID,cantidad:cant})
+
+  
+
+
+    await  User.updateCart(user,cart)
+
+    res.send(cart).status(202)
+
+})
+
+
+
+
 
 app.listen(port, () => {
     console.log(`Running server at ${port}`)
 })
+
+

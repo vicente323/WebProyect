@@ -1,20 +1,25 @@
 @host=http://localhost:3100
 @id = c5O7tMsGoRKP2oy8u7w56
 
-###
+
+@token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRoZWJlamFyYW5vIiwiZW1haWwiOiJiZWphcmFubzMyM0B0ZXN0LmNvbSIsImlhdCI6MTY1MTg4MTc5NiwiZXhwIjoxNjUxODg0MTk2fQ.INGGogOF8K5Tf4THT_L3cq3u3kzwm8paxhOuGanHGnk"
+  
+
+
+### La idea es que el product owner sea el token 
 
 POST {{host}}/products   
 Content-Type: application/json
-productOwner: testing
+
 
 {
  
-    "name":"Funko testing2",
-    "description":"Funko tes2t",
-    "category":"Test description2",
-    "price":2900,
-    "stock":2
-
+    "name":"Funko testing con loggin de tokens final final ",
+    "descripcion":"Funko test con tokens 22",
+    "category":"tokens",
+    "price":20111,
+    "stock":1101,
+    "token":{{token}}
 }
 ###
 
@@ -66,3 +71,29 @@ Content-Type: application/json
     "email": "bejarano323@test.com",
     "password": "testpassword"
   }
+
+### 
+
+
+### Los tokens de este metodo caducan por lo que hay que cambiarlo cada x tiempo 
+PUT {{host}}/cart
+Content-Type: application/json
+
+{
+    "token":{{token}},
+    "productID" :"I33XrH58fq-aeto5a_ugq",
+    "cant": 1
+
+
+}
+
+
+
+###
+
+GET {{host}}/cart
+Content-Type: application/json
+
+{
+    "token":  {{token}}
+}

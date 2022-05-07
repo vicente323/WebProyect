@@ -2,10 +2,11 @@ const jwt=require("jsonwebtoken");
 
 
 function auth(req,res,next){
+        
 
-        let token= req.get('UserAuth')
+        let token= req.body.token
         if(token){
-
+               
                 jwt.verify(token,"DASW",(err,payload)=>{
 
 
@@ -16,9 +17,10 @@ function auth(req,res,next){
                     else{
 
 
-                        console.log(payload);
+                        // console.log(payload);
                         req.email=payload.email;
                         req.username=payload.username;
+                        console.log("Logged in")
                         next();
                     }
 
@@ -29,3 +31,4 @@ function auth(req,res,next){
              res.status(401).send({error:"No autentificado"})
         }
 }
+module.exports={auth}
