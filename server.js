@@ -1,6 +1,7 @@
 
-const { product } = require("./db/product")
+const { product } = require("./db/product");
 const { User } = require("./db/User");
+const {wishlist}= require("./db/wishlist")
 const express = require("express")
 const fs = require("fs");
 const { query } = require("express");
@@ -327,7 +328,77 @@ app.put('/cart',auth,async(req,res)=>{
     res.send(cart).status(202)
 
 })
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////
+////////////////
+////////////////    Wishlist    (Vicente)
+////////////////
+////////////////
+////////////////
+////////////////
+app.put('/wishlist',auth,async(req,res)=>{
+    let username={owner:req.username}
+    let wish;
+    console.log(username)
 
+
+    let {productID}=req.body;
+  
+      
+        wish= await wishlist.getList(username);
+        
+
+
+        if(wish!=[]){
+            wish=wish[0]
+            let exist=false;
+            wish=wish.list
+            console.log("inside the if ",wish)
+        
+        
+            
+            wish.map(prd=>{
+        
+        
+                if(prd.producto==productID){
+                    
+                    
+                    exist=true;
+                }
+        
+        
+        
+            })
+            if(!exist)wish.push({producto:productID})
+            console.log(wish)
+            await wishlist.addToList(username,wish)
+
+        }
+       
+
+    
+        else{
+
+                console.log("error solverd")
+                wish= await wishlist.createList(username.owner)
+                wish=[]
+                wish.push({producto:productID})
+                await wishlist.addToList(username,wish)
+                
+            }
+   
+    res.send(wish).status(202)
+
+
+})
+
+app.get('/wishlist',auth,async(req,res)=>{
+    let username={username:req.username}
+    let wish= await wishlist.getList(username);
+
+    wish=wish[0]
+    res.send(wish).status(202)
+})
 
 
 

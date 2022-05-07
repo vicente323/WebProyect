@@ -2,7 +2,7 @@
 @id = c5O7tMsGoRKP2oy8u7w56
 
 
-@token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRoZWJlamFyYW5vIiwiZW1haWwiOiJiZWphcmFubzMyM0B0ZXN0LmNvbSIsImlhdCI6MTY1MTg4MTc5NiwiZXhwIjoxNjUxODg0MTk2fQ.INGGogOF8K5Tf4THT_L3cq3u3kzwm8paxhOuGanHGnk"
+@token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRoZWJlamFyYW5vIiwiZW1haWwiOiJiZWphcmFubzMyM0B0ZXN0LmNvbSIsImlhdCI6MTY1MTk1NzE0NSwiZXhwIjoxNjUxOTU5NTQ1fQ.akuculwu-aXFdDG6BCvh1QaOIRz9S-35JK1TZL_c2f4"
   
 
 
@@ -53,6 +53,33 @@ Content-Type: application/json
 
 GET {{host}}/users
 
+
+###
+
+
+
+PUT {{host}}/wishlist
+Content-Type: application/json
+
+{
+    "token":{{token}},
+    "productID" :"5QYKUWxW69G7hiPy5UmHZ"
+
+
+}
+
+
+###
+
+GET {{host}}/wishlist
+Content-Type: application/json
+
+{
+    "token":{{token}}
+   
+
+
+}
 
 ###
 
