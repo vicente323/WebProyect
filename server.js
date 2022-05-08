@@ -12,10 +12,10 @@ const shortid = require("shortid");
 const jwt=require("jsonwebtoken");
 const { compareHash } = require("./utils/crypt");
 
+app.use('/static',express.static('public'))
 
 
-
- app.use(express.json())
+app.use(express.json())
 
 app.post('/products',auth, async (req, res) => {
     console.log("----Post product----")
@@ -153,20 +153,21 @@ app.put('/products/:id',async (req,res)=>{
 app.post('/login',async(req,res)=>{
     const firma= "DASW"
     let{username,password}=req.headers;
-    
+    console.log(username)
+    console.log(password)
     let resp= await User.login(username);
     let user=resp[0]
-    
-  
+ 
+
 
    
 
-    if(resp){
+    if(user!=undefined){
         if( await compareHash(password,user.password)){
            
 
-            let token =jwt.sign({username:user.username,email:user.email},firma,{expiresIn:60*40});
-            
+            let token = jwt.sign({username:user.username,email:user.email},firma,{expiresIn:60*40});
+            console.log({token})
             res.status(202).send({token});
 
         }

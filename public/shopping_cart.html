@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Shopping cart</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="https://i.pinimg.com/originals/20/eb/5c/20eb5c46712c53be1ec5de2ca765ad24.jpg">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body{
+     
+            background:white;
+            background-image: url(wavelog2.svg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .title {
+            margin-bottom: 5vh
+        }
+
+        .card {
+            margin-top: 500px;
+            margin: auto;
+            max-width: 950px;
+            width: 90%;
+            box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 1rem;
+            border: transparent
+        }
+
+        @media(max-width:767px) {
+            .card {
+                margin: 3vh auto
+            }
+        }
+
+        .cart {
+            background-color: #fff;
+            padding: 4vh 5vh;
+            border-bottom-left-radius: 1rem;
+            border-top-left-radius: 1rem
+        }
+
+        @media(max-width:767px) {
+            .cart {
+                padding: 4vh;
+                border-bottom-left-radius: unset;
+                border-top-right-radius: 1rem
+            }
+        }
+
+        .summary {
+            background-color: #ddd;
+            border-top-right-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            padding: 4vh;
+            background-color: rgba(230, 230, 230, 0.514);
+
+        }
+
+        @media(max-width:767px) {
+            .summary {
+                border-top-right-radius: unset;
+                border-bottom-left-radius: 1rem
+            }
+        }
+
+
+        /*color del texto de la columna*/
+
+        .summary>.row>.col,
+        p {
+            color: black;
+        }
+
+        .summary .col-2 {
+            padding: 0
+        }
+
+        .summary .col-10 {
+            padding: 0
+        }
+
+        .row {
+            margin: 0
+        }
+
+        .title b {
+            font-size: 1.5rem
+        }
+
+        .main {
+            margin: 0;
+            padding: 2vh 0;
+            width: 100%
+        }
+
+        .col-2,
+        .col {
+            padding: 0 1vh
+        }
+
+        a {
+            padding: 0 1vh
+        }
+
+        .close {
+            margin-left: auto;
+            font-size: 0.7rem
+        }
+
+        /* img {
+            width: 3.5rem
+        } */
+
+        .back-to-shop {
+            margin-top: 4.5rem
+        }
+
+        h5 {
+            margin-top: 4vh;
+
+        }
+
+        hr {
+            margin-top: 1.25rem
+        }
+
+        /* form {
+            padding: 2vh 0
+        } */
+
+        select {
+            border: 1px solid rgba(0, 0, 0, 0.137);
+            padding: 1.5vh 1vh;
+            margin-bottom: 4vh;
+            outline: none;
+            width: 100%;
+            background-color: rgb(247, 247, 247)
+        }
+
+        input {
+            border: 1px solid rgba(0, 0, 0, 0.137);
+            padding: 1vh;
+            outline: none;
+            width: 100%;
+            background-color: rgb(247, 247, 247)
+        }
+
+        input:focus::-webkit-input-placeholder {
+            color: transparent
+        }
+
+        .btn-2 {
+            background-color: #000;
+            border-color: #000;
+            color: white;
+            /*
+            width: 100%;
+            
+            font-size: 0.7rem;
+            margin-top: 4vh;
+            padding: 1vh;
+            */
+
+            border-radius: 0
+        }
+
+        .btn:focus {
+            box-shadow: none;
+            outline: none;
+            box-shadow: none;
+            color: white;
+            -webkit-box-shadow: none;
+            -webkit-user-select: none;
+            transition: none
+        }
+
+        .btn:hover {
+            color: white
+        }
+
+        a {
+            color: black
+        }
+
+        a:hover {
+            color: black;
+            text-decoration: none
+        }
+
+        #code {
+            background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253), rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+            background-repeat: no-repeat;
+            background-position-x: 95%;
+            background-position-y: center
+        }
+
+        .navbar {
+            margin-bottom: 50px;
+           
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+      
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary col-12 p-3 border-radius  " style="border-radius: 2px;">
+          <a class="navbar-brand pl-4 pr-4 " href="./MainPage.html"><img src="https://mundofuntastic.com/img/tienda-oficial-funko.png" alt="" style="height: 40px"></a>
+   
+          
+          <form class="form-inline my-2 my-lg-0 col-6 d-flex">
+              <input class="form-control  w-75" type="text" placeholder="Encuentra los mejores precios " required>
+              <button class="btn btn-outline-success   ml-2 pt-1  border-white text-white " type="submit">Buscar</button>
+          </form>
+  
+  
+  
+  
+          <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="collapsibleNavId  ">
+              <ul class="navbar-nav  ml-5 mt-2 mt-lg-0 ml-auto ">
+                
+                
+                  <li class="nav-item dropdown ">
+                      <a class="nav-link dropdown-toggle  pr-4" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi cuenta</a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownId">
+                          <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#modelId">Ingresar</a>
+                          <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#modelId2" >Registro</a>
+                          <hr>
+                          <a class="dropdown-item" href="orders.html">Mis pedidos</a>
+  
+                      </div>
+                  </li>
+                  <li class="nav-item active pr-4">
+                      <a class="nav-link" href="shopping_cart.html"><i class="fas fa-shopping-cart      "></i> <span class="sr-only">(current)</span>2</a>
+                  </li>
+              </ul>
+              
+          </div>
+      </nav>
+          
+
+    </header>
+
+
+    <div class="card">
+        <div class="row">
+            <div class="col-md-8 cart">
+                <div class="title">
+                    <div class="row">
+                        <div class="col">
+                            <h4><b>Mi carrito</b></h4>
+                        </div>
+                        <div class="col align-self-center text-right text-muted">3 items</div>
+                    </div>
+                </div>
+                <div class="row border-top border-bottom">
+                    <div class="row main align-items-center">
+                        <div class="col-2">
+                            <img class="img-fluid"
+                                src="https://www.collinsdictionary.com/images/full/banana_64728013.jpg">
+                        </div>
+                        <div class="col">
+                            <div class="row text-muted">Platano Chiapas</div>
+                            <div class="row">Platano traido de chiapas</div>
+                        </div>
+                        <div class="col"> <input type="number" id="quantity" name="quantity" min="0" max="5"
+                                placeholder="0">
+                        </div>
+
+
+
+
+                        <div class="col">&dollar; 30.00 <span class="close">&#10005;</span></div>
+                    </div>
+                </div>
+
+                <div class="row border-top border-bottom">
+                    <div class="row main align-items-center">
+                        <div class="col-2"><img class="img-fluid"
+                                src="https://www.chedraui.com.mx/medias/7501052474007-00-CH1200Wx1200H?context=bWFzdGVyfHJvb3R8MTAxNzI1fGltYWdlL2pwZWd8aDlkL2g0NS8xMDk1OTcyOTUyNDc2Ni5qcGd8OTBmYzgxNDNiZTI2ZjM0YmM0ZmY4MzAzOWFjZDE4MTliMWNhNTU0OGFlYjQ1Mjg1MWU5N2IyMzFmYWYzOGMwOQ">
+                        </div>
+                        <div class="col">
+                            <div class="row text-muted">Mermelada de fresa</div>
+                            <div class="row">Mermelada de fresa marca Jaques</div>
+                        </div>
+                        <div class="col"> <input type="number" id="quantity" name="quantity" min="0" max="5"
+                                placeholder="0">
+                        </div>
+
+
+
+
+                        <div class="col">&dollar; 30.00 <span class="close">&#10005;</span></div>
+                    </div>
+                </div>
+
+                <div class="row border-top border-bottom">
+                    <div class="row main align-items-center">
+                        <div class="col-2"><img class="img-fluid" src="https://www.ecured.cu/images/d/d0/Manzana.jpeg">
+                        </div>
+                        <div class="col">
+                            <div class="row text-muted">Manzana Red delicious</div>
+                            <div class="row">Manzanas traidas del estado de Washington</div>
+                        </div>
+                        <div class="col"> <input type="number" id="quantity" name="quantity" min="0" max="5"
+                                placeholder="0">
+                        </div>
+                        <div class="col">&dollar; 50.00 <span class="close">&#10005;</span></div>
+                    </div>
+                </div>
+                <div class="back-to-shop"><a href="./MainPage.html">&leftarrow;</a><span class="text-muted">Regresar a tienda</span>
+                </div>
+            </div>
+            <div class="col-md-4 summary">
+                <div>
+                    <h5><b>Resumen de compra</b></h5>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col" style="padding-left:0;">ITEMS 3</div>
+                    <div class="col text-right">&dollar; 132.00</div>
+                </div>
+                <form>
+                    <p>Envio</p> <select>
+                        <option class="text-muted">Envio estandar $50</option>
+                        <option class="text-muted">Envio express $100</option>
+                    </select>
+                    <p>Codigo de promocion</p> <input id="code" placeholder="Introduce tu codigo">
+                </form>
+                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                    <div class="col">TOTAL A PAGAR</div>
+                    <div class="col text-right">&dollar; 137.00</div>
+                </div> <button class="btn-2"><a href="./payment.html" class="text-light">Checkout</a></button>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
