@@ -71,7 +71,7 @@ Content-Type: application/json
 
 ###
 
-GET {{host}}/wishlist
+PUT {{host}}/wishlist
 Content-Type: application/json
 
 {
@@ -84,8 +84,14 @@ Content-Type: application/json
 ###
 
 POST {{host}}/login
-password:testpassword
-username:Thebejarano
+Content-Type: application/json
+
+{
+    "pasword":"testpassword",
+    "username":"Thebejarano"
+
+
+}
 
 ###
 

@@ -6,7 +6,7 @@ const host="http://localhost:3100"
 
 
 async function loginToPage(){
-    event.preventDefault
+    event.preventDefault()
     let pasword= document.getElementById("psw")
     let username=document.getElementById("usr")
     pasword=pasword.value
@@ -17,13 +17,13 @@ async function loginToPage(){
 
     
     console.log(pasword,username)
-    let res= await fetch(`${host}/login`,
+    let res= await fetch('/login',
     {
         method:'POST',
         headers:{
-            "password":pasword,
-            "username":username
-        }
+            "Content-Type":" application/json"
+        },
+        body: JSON.stringify({pasword, username})
     }
 
 
@@ -33,19 +33,27 @@ async function loginToPage(){
     res = await res.json()
     console.log(res)
     
+    localStorage.setItem('token',res.token)
 
+    if(res.error){
+
+
+        alert(res.error)
+    }
+    if(res.token){
+
+        // * Se nos redirecciona a la main page una vez que nos hemos loggeado 
+        window.location.replace("http://localhost:3100/MainPage.html");
+
+
+    }
+
+
+
+
+    
 
 }
 
 
-async function print(){
 
-  let test= await fetch(`${host}/products`,{method:'GET'})
-  let response= await test.json()
-  console.log(response) 
-}
-
-console.log("log charged")
-
-
-print()

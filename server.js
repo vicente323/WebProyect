@@ -12,8 +12,7 @@ const shortid = require("shortid");
 const jwt=require("jsonwebtoken");
 const { compareHash } = require("./utils/crypt");
 
-app.use('/static',express.static('public'))
-
+app.use('/',express.static('public'))
 
 app.use(express.json())
 
@@ -151,10 +150,11 @@ app.put('/products/:id',async (req,res)=>{
 */
 
 app.post('/login',async(req,res)=>{
+    console.log("-------Login-------")
     const firma= "DASW"
-    let{username,password}=req.headers;
+    let{username,pasword}=req.body;
     console.log(username)
-    console.log(password)
+    console.log(pasword)
     let resp= await User.login(username);
     let user=resp[0]
  
@@ -163,7 +163,7 @@ app.post('/login',async(req,res)=>{
    
 
     if(user!=undefined){
-        if( await compareHash(password,user.password)){
+        if( await compareHash(pasword,user.password)){
            
 
             let token = jwt.sign({username:user.username,email:user.email},firma,{expiresIn:60*40});
@@ -392,8 +392,13 @@ app.put('/wishlist',auth,async(req,res)=>{
 
 
 })
+/* 
+    ! Este metodo se hizo post pero funciona como  get ya que de otra manera no me deja mandar body en el fetch para mandar el token
+    !Pienso solucionarlo despues con la info que encontre 
+    Todo: https://stackoverflow.com/questions/48187482/pass-payload-in-get-request-react-fetch (solucion)
 
-app.get('/wishlist',auth,async(req,res)=>{
+*/
+app.post('/wishlist',auth,async(req,res)=>{
     let username={username:req.username}
     let wish= await wishlist.getList(username);
 
