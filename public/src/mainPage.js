@@ -32,17 +32,16 @@ if(token!=undefined){
         body: JSON.stringify({token})
      })
 
+        
+
+     console.log(res.status)
 
 
+     if(res.status==401){
 
 
-
-
-     if(res.error){
-
-
-        console.log("Not logged")
-        return true
+        console.log("Not logged",res)
+        return false
      }
      else{
 
