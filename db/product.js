@@ -17,9 +17,13 @@ let productsSchema = mongoose.Schema({
         required: true,
 
     },
-    name: {
-        type: String,
-        required: true
+    descripcion:{
+        type:String,
+        required:true,
+    },
+    name:{
+        type:String,
+        required:true
     },
     price: {
 
@@ -41,7 +45,14 @@ let productsSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    QA: String
+
+    image:{
+        type:String,
+        required:true
+    },
+    QA: String 
+
+
 
 })
 //* Mediante product podemos modificar el esquema, agregar o quitar cosas.
@@ -79,7 +90,8 @@ async function findProducts(query) {
 }
 // ! add db methods here
 
-productsSchema.statics.getProducts = async (query) => {
+
+productsSchema.statics.getProducts=async (query)=>{
     //* query is an object 
     return await product.find(query)
 
@@ -95,9 +107,21 @@ productsSchema.statics.addProduct = async (newProduct) => {
 
 
 }
-productsSchema.statics.deletePoduct = async (id) => {
-    
-    return await product.findOneAndDelete({ id })
+
+
+productsSchema.statics.getProductById=async (id)=>{
+
+    return await product.findOne({id:id})
+
+
+
+
+}
+
+
+productsSchema.statics.deletePoduct= async(id)=>{
+    let resp = await product.findByIdAndDelete(id)
+    return resp
 }
 
 

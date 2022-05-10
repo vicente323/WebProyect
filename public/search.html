@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fontawesome.com/v4.7.0/assets/font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+	<style>
+        .icon-control {
+    margin-top: 5px;
+    float: right;
+    font-size: 80%;
+}
+
+
+
+.btn-light {
+    background-color: #fff;
+    border-color: #e4e4e4;
+}
+
+.list-menu {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+.list-menu a {
+    color: #343a40;
+}
+
+.card-product-grid .info-wrap {
+    overflow: hidden;
+    padding: 18px 20px;
+}
+
+[class*='card-product'] a.title {
+    color: #212529;
+    display: block;
+}
+
+.card-product-grid:hover .btn-overlay {
+    opacity: 1;
+}
+.card-product-grid .btn-overlay {
+    -webkit-transition: .5s;
+    transition: .5s;
+    opacity: 0;
+    left: 0;
+    bottom: 0;
+    color: #fff;
+    width: 100%;
+    padding: 5px 0;
+    text-align: center;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+}
+.img-wrap {
+    overflow: hidden;
+    position: relative;
+}
+    </style>
+    <title>Document</title>
+</head>
+<body>
+ 
+
+
+	<header>
+      
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary col-12 p-3 border-radius  " style="border-radius: 2px;">
+          <a class="navbar-brand pl-4 pr-4 " href="./MainPage.html"><img src="https://mundofuntastic.com/img/tienda-oficial-funko.png" alt="" style="height: 40px"></a>
+   
+          
+          <form class="form-inline my-2 my-lg-0 col-6 d-flex">
+              <input class="form-control  w-75" type="text" placeholder="Encuentra los mejores precios " required>
+              <button class="btn btn-outline-success   ml-2 pt-1  border-white text-white " type="submit">Buscar</button>
+          </form>
+  
+  
+  
+  
+          <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="collapsibleNavId  ">
+              <ul class="navbar-nav  ml-5 mt-2 mt-lg-0 ml-auto ">
+                
+                
+                  <li class="nav-item dropdown ">
+                      <a class="nav-link dropdown-toggle  pr-4" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi cuenta</a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownId">
+                          <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#modelId">Ingresar</a>
+                          <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#modelId2" >Registro</a>
+                          <hr>
+                          <a class="dropdown-item" href="orders.html">Mis pedidos</a>
+  
+                      </div>
+                  </li>
+                  <li class="nav-item active pr-4">
+                      <a class="nav-link" href="shopping_cart.html"><i class="fas fa-shopping-cart      "></i> <span class="sr-only">(current)</span>2</a>
+                  </li>
+              </ul>
+              
+          </div>
+      </nav>
+          
+
+    </header>
+
+<div class="container">
+	<div class="row">
+	<aside class="col-md-3">
+		
+<div class="card">
+    <article class="filter-group">
+		<header class="card-header">
+			<a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" class="">
+				<i class="icon-control fa fa-chevron-down"></i>
+				<h6 class="title">Type </h6>
+			</a>
+		</header>
+		<div class="filter-content collapse show" id="collapse_2" style="">
+			<div class="card-body">
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox" checked=""  class="custom-control-input">
+				  <div class="custom-control-label">Regular 
+				  	<b class="badge badge-pill badge-light float-right">1000</b>  </div>
+				</label>
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox"  class="custom-control-input">
+				  <div class="custom-control-label">Chase 
+				  	<b class="badge badge-pill badge-light float-right">150</b>  </div>
+				</label>
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox"  class="custom-control-input">
+				  <div class="custom-control-label">Glow
+				  	<b class="badge badge-pill badge-light float-right">35</b> </div>
+				</label>
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox"  class="custom-control-input">
+				  <div class="custom-control-label">Metallic 
+				  	<b class="badge badge-pill badge-light float-right">89</b> </div>
+				</label>
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox" class="custom-control-input">
+				  <div class="custom-control-label">Blacklight
+				  	<b class="badge badge-pill badge-light float-right">15</b>  </div>
+				</label>
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <div class="custom-control-label">Flocked
+                        <b class="badge badge-pill badge-light float-right">42</b>  </div>
+                  </label>
+	</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- filter-group .// -->
+    <article class="filter-group">
+		<header class="card-header">
+			<a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" class="">
+				<i class="icon-control fa fa-chevron-down"></i>
+				<h6 class="title">Brands </h6>
+			</a>
+		</header>
+		<div class="filter-content collapse show" id="collapse_2" style="">
+			<div class="card-body">
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox" checked="" class="custom-control-input">
+				  <div class="custom-control-label">  All
+				  	<b class="badge badge-pill badge-light float-right">1200</b>  </div>
+				</label>
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox"  class="custom-control-input">
+				  <div class="custom-control-label">Marvel
+				  	<b class="badge badge-pill badge-light float-right">80</b>  </div>
+				</label>
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox"  class="custom-control-input">
+				  <div class="custom-control-label">DC 
+				  	<b class="badge badge-pill badge-light float-right">355</b> </div>
+				</label>
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox" class="custom-control-input">
+				  <div class="custom-control-label">Disney
+				  	<b class="badge badge-pill badge-light float-right">89</b> </div>
+				</label>
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox" class="custom-control-input">
+				  <div class="custom-control-label">Star Wars
+				  	<b class="badge badge-pill badge-light float-right">21</b>  </div>
+				</label>
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <div class="custom-control-label">Animation
+                        <b class="badge badge-pill badge-light float-right">24</b>  </div>
+                  </label>
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <div class="custom-control-label">Icons
+                        <b class="badge badge-pill badge-light float-right">3</b>  </div>
+                  </label>
+	</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- filter-group .// -->
+    
+    <article class="filter-group">
+		<header class="card-header">
+			<a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" class="">
+				<i class="icon-control fa fa-chevron-down"></i>
+				<h6 class="title">Exclusive </h6>
+			</a>
+		</header>
+		<div class="filter-content collapse show" id="collapse_2" style="">
+			<div class="card-body">
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox" checked="" class="custom-control-input">
+				  <div class="custom-control-label">  
+				  	<b class="badge badge-pill badge-light float-right">1200</b>  </div>
+				</label>
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox"  class="custom-control-input">
+				  <div class="custom-control-label">Funko Shop
+				  	<b class="badge badge-pill badge-light float-right">35</b>  </div>
+				</label>
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox"  class="custom-control-input">
+				  <div class="custom-control-label">GameStop
+				  	<b class="badge badge-pill badge-light float-right">12</b> </div>
+				</label>
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox"  class="custom-control-input">
+				  <div class="custom-control-label">Hot Topic
+				  	<b class="badge badge-pill badge-light float-right">234</b> </div>
+				</label>
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox" class="custom-control-input">
+				  <div class="custom-control-label">Amazon
+				  	<b class="badge badge-pill badge-light float-right">93</b>  </div>
+				</label>
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <div class="custom-control-label">Toys R Us
+                        <b class="badge badge-pill badge-light float-right">1</b>  </div>
+                  </label>
+	</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- filter-group .// -->
+    <article class="filter-group">
+		<header class="card-header">
+			<a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" class="">
+				<i class="icon-control fa fa-chevron-down"></i>
+				<h6 class="title">Convention </h6>
+			</a>
+		</header>
+		<div class="filter-content collapse show" id="collapse_2" style="">
+			<div class="card-body">
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox" checked="" class="custom-control-input">
+				  <div class="custom-control-label">  
+				  	<b class="badge badge-pill badge-light float-right">1200</b>  </div>
+				</label>
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox"  class="custom-control-input">
+				  <div class="custom-control-label">Summer
+				  	<b class="badge badge-pill badge-light float-right">35</b>  </div>
+				</label>
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox"  class="custom-control-input">
+				  <div class="custom-control-label">Funko Fair
+				  	<b class="badge badge-pill badge-light float-right">12</b> </div>
+				</label>
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox"  class="custom-control-input">
+				  <div class="custom-control-label">ECCC
+				  	<b class="badge badge-pill badge-light float-right">234</b> </div>
+				</label>
+				<label class="custom-control custom-checkbox">
+				  <input type="checkbox" class="custom-control-input">
+				  <div class="custom-control-label">NYCC
+				  	<b class="badge badge-pill badge-light float-right">93</b>  </div>
+				</label>
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <div class="custom-control-label">TargetCon
+                        <b class="badge badge-pill badge-light float-right">9</b>  </div>
+                  </label>
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <div class="custom-control-label">SDCC
+                        <b class="badge badge-pill badge-light float-right">23</b>  </div>
+                  </label>
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <div class="custom-control-label">Spring Convention
+                        <b class="badge badge-pill badge-light float-right">43</b>  </div>
+                  </label>
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <div class="custom-control-label">Fall Convention
+                        <b class="badge badge-pill badge-light float-right">5</b>  </div>
+                  </label>
+	</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- filter-group .// -->
+	
+	<article class="filter-group">
+		<header class="card-header">
+			<a href="#" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" class="">
+				<i class="icon-control fa fa-chevron-down"></i>
+				<h6 class="title">Price range </h6>
+			</a>
+		</header>
+		<div class="filter-content collapse show" id="collapse_3" style="">
+			<div class="card-body">
+				<input type="range" class="custom-range" min="0" max="100" name="">
+				<div class="form-row">
+				<div class="form-group col-md-6">
+				  <label>Min</label>
+				  <input class="form-control" placeholder="$0" type="number">
+				</div>
+				<div class="form-group text-right col-md-6">
+				  <label>Max</label>
+				  <input class="form-control" placeholder="$10,000" type="number">
+				</div>
+				</div> <!-- form-row.// -->
+				<button class="btn btn-block btn-primary">Apply</button>
+			</div><!-- card-body.// -->
+		</div>
+	</article> <!-- filter-group .// -->
+    
+</div> <!-- card.// -->
+
+	</aside>
+	<main class="col-md-9">
+
+<header class="border-bottom mb-4 pb-3">
+		<div class="form-inline">
+			<span class="mr-md-auto">10 Items found </span>
+			<select class="mr-2 form-control">
+				<option>Latest items</option>
+				<option>Trending</option>
+				<option>Most Popular</option>
+				<option>Cheapest</option>
+			</select>
+		</div>
+</header><!-- sect-heading -->
+
+<div class="row">
+	<div class="col-md-4">
+		<figure class="card card-product-grid">
+			<div class="img-wrap"> 
+							<img src="https://as01.epimg.net/mexico/imagenes/2021/11/04/showroom/1636044314_006527_1636044462_noticia_normal.jpg" class="img-fluid">
+				<a class="btn-overlay" href="./product.html"><i class=""></i> Quick view</a>
+			</div> <!-- img-wrap.// -->
+			<figcaption class="info-wrap"	>
+				<div class="fix-height">
+					<a href="#" class="title">Captain America</a>
+					<div class="price-wrap mt-2">
+						<span class="price">$280</span>
+					</div> <!-- price-wrap.// -->
+				</div>
+				<a href="#" class="btn btn-block btn-primary">Add to cart </a>	
+			</figcaption>
+		</figure>
+	</div> <!-- col.// -->
+
+	<div class="col-md-4">
+		<figure class="card card-product-grid">
+			<div class="img-wrap"> 
+							<img src="https://s.cornershopapp.com/product-images/2978906.jpg?versionId=bDfbtUNLEOBk0kWqVIpamnjdvRip7Juo" width="100%" height="100%" class="img-fluid">
+				<a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
+			</div> <!-- img-wrap.// -->
+			<figcaption class="info-wrap">
+				<div class="fix-height">
+					<a href="#" class="title">Shangela</a>
+					<div class="price-wrap mt-2">
+						<span class="price">$280</span>
+					</div> <!-- price-wrap.// -->
+				</div>
+				<a href="#" class="btn btn-block btn-primary">Add to cart </a>	
+			</figcaption>
+		</figure>
+	</div> <!-- col.// -->
+
+	<div class="col-md-4">
+		<figure class="card card-product-grid">
+			<div class="img-wrap"> 
+					<img src="https://cdn.shopify.com/s/files/1/2437/4099/products/53080-Pop-Albums-ACDCHighway-To-Hell-Pop-GLAM-1-WEB_1300x1300.png?v=1611945557"  class="img-fluid">
+				<a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
+			</div> <!-- img-wrap.// -->
+			<figcaption class="info-wrap">
+				<div class="fix-height">
+					<a href="#" class="title">Highway to Hell</a>
+					<div class="price-wrap mt-2">
+						<span class="price">$450</span>
+					</div> <!-- price-wrap.// -->
+				</div>
+				<a href="#" class="btn btn-block btn-primary">Add to cart </a>	
+			</figcaption>
+		</figure>
+	</div> <!-- col.// -->
+
+	<div class="col-md-4">
+		<figure class="card card-product-grid">
+			<div class="img-wrap"> 
+							<img src="https://www.juguetron.mx/media/catalog/product/5/0/50670-1_sr8yyaukupfisyiq.png?optimize=high&fit=bounds&height=560&width=560&format=jpeg" class="img-fluid">
+				<a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
+			</div> <!-- img-wrap.// -->
+			<figcaption class="info-wrap">
+				<div class="fix-height">
+					<a href="#" class="title">Carl & Ellie</a>
+					<div class="price-wrap mt-2">
+						<span class="price">$1280</span>
+					</div> <!-- price-wrap.// -->
+				</div>
+				<a href="#" class="btn btn-block btn-primary">Add to cart </a>	
+			</figcaption>
+		</figure>
+	</div> <!-- col.// -->
+
+	<div class="col-md-4">
+		<figure class="card card-product-grid">
+			<div class="img-wrap"> 
+							<img src="https://cdn.shopify.com/s/files/1/2026/0991/products/71fEjfoamaL._SL1500_2048x2048.jpg?v=1549471862" class="img-fluid">
+				<a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
+			</div> <!-- img-wrap.// -->
+			<figcaption class="info-wrap">
+				<div class="fix-height">
+					<a href="#" class="title">El Chapulin Colorado</a>
+					<div class="price-wrap mt-2">
+						<span class="price">$280</span>
+					</div> <!-- price-wrap.// -->
+				</div>
+				<a href="#" class="btn btn-block btn-primary">Add to cart </a>	
+			</figcaption>
+		</figure>
+	</div> <!-- col.// -->
+
+	<div class="col-md-4">
+		<figure class="card card-product-grid">
+			<div class="img-wrap"> 
+							<img src="https://cdn.shopify.com/s/files/1/0168/5658/0150/products/Screenshot2020-11-06091536_2048x2048.png?v=1604682984" class="img-fluid">
+				<a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
+			</div> <!-- img-wrap.// -->
+			<figcaption class="info-wrap">
+				<div class="fix-height">
+					<a href="#" class="title">Grizz, Panda & Ice Bear</a>
+					<div class="price-wrap mt-2">
+						<span class="price">$3500</span>
+					</div> <!-- price-wrap.// -->
+				</div>
+				<a href="#" class="btn btn-block btn-primary">Add to cart </a>	
+			</figcaption>
+		</figure>
+	</div> <!-- col.// -->
+
+	<div class="col-md-4">
+		<figure class="card card-product-grid">
+			<div class="img-wrap"> 
+							<img src="https://cinemedios.com/wp-content/uploads/2020/12/Funko-Pop-Star-Wars-The-Mandalorian-Grogu-en-una-mochila.jpg" class="img-fluid">
+				<a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
+			</div> <!-- img-wrap.// -->
+			<figcaption class="info-wrap">
+				<div class="fix-height">
+					<a href="#" class="title">The Child</a>
+					<div class="price-wrap mt-2">
+						<span class="price">$280</span>
+					</div> <!-- price-wrap.// -->
+				</div>
+				<a href="#" class="btn btn-block btn-primary">Add to cart </a>	
+			</figcaption>
+		</figure>
+	</div> <!-- col.// -->
+
+    <div class="col-md-4">
+		<figure class="card card-product-grid">
+			<div class="img-wrap"> 
+							<img src="https://assets.frikily.com/wp-content/uploads/2022/01/Funko-Pop-Zombie-Captain-America-941-What-If-300x300.jpg" class="img-fluid">
+				<a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
+			</div> <!-- img-wrap.// -->
+			<figcaption class="info-wrap">
+				<div class="fix-height">
+					<a href="#" class="title">Zombie Captain America</a>
+					<div class="price-wrap mt-2">
+						<span class="price">$280</span>
+					</div> <!-- price-wrap.// -->
+				</div>
+				<a href="#" class="btn btn-block btn-primary">Add to cart </a>	
+			</figcaption>
+		</figure>
+	</div> <!-- col.// -->
+
+	<div class="col-md-4">
+		<figure class="card card-product-grid">
+			<div class="img-wrap"> 
+				<img src="https://cdn.shopify.com/s/files/1/0122/4969/4272/products/funko-figura-pop-walking-dead-negan-exclusive_250x250@2x.jpg" class="img-fluid">
+				<a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
+			</div> <!-- img-wrap.// -->
+			<figcaption class="info-wrap">
+				<div class="fix-height">
+					<a href="#" class="title">Negan</a>
+					<div class="price-wrap mt-2">
+						<span class="price">$480</span>
+					</div> <!-- price-wrap.// -->
+				</div>
+				<a href="#" class="btn btn-block btn-primary">Add to cart </a>	
+			</figcaption>
+		</figure>
+	</div> <!-- col.// -->
+</div> <!-- row end.// -->
+
+
+<nav class="mt-4" aria-label="Page navigation sample">
+  <ul class="pagination">
+    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+
+	</main>
+	</div>
+</div>
+</body>
+</html>

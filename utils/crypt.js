@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const { get } = require("express/lib/response");
+const { resolve } = require("path");
 
 
 function getHash(password) {
@@ -15,4 +16,22 @@ function getHash(password) {
     });
 }
 
-module.exports = { getHash }
+
+async function   compareHash(password1,password2) {
+    
+
+
+
+
+
+
+
+
+
+    return  bcrypt.compareSync(password1,password2);
+       
+
+    
+}
+
+module.exports = { getHash,compareHash }
