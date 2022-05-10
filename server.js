@@ -19,13 +19,13 @@ app.use(express.json())
 app.post('/products',auth, async (req, res) => {
     console.log("----Post product----")
    
-    let { name, price, descripcion, category, stock } = req.body;
+    let { name, price, descripcion, category, stock ,image} = req.body;
     let productowner = req.username
     console.log(productowner)
     
-    if (name && price && descripcion && category && stock) {
+    if (name && price && descripcion && category && stock && image) {
 
-        let prodToadd ={name:name,productOwner:req.username,price:price,stock:stock,category:category,descripcion:descripcion}
+        let prodToadd ={name:name,productOwner:req.username,price:price,stock:stock,category:category,descripcion:descripcion,image:image}
         
 
 
@@ -288,7 +288,7 @@ app.put('/users/:id', async (req, res) => {
 ////////////////
 ////////////////
 ////////////////(
-app.get('/cart', auth,async(req,res)=>{
+app.post('/cart', auth,async(req,res)=>{
 
 
 

@@ -1,13 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" onload="MainLoad()">
 <head>
+
+	<!-- !La neta agregue esto sin filtrar que se necesita o no luego lo depuro-->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="Carousel%20Template%20for%20Bootstrap_files/jquery-3.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="Carousel%20Template%20for%20Bootstrap_files/jquery-slim.js"></script>
+    <script src="Carousel%20Template%20for%20Bootstrap_files/popper.js"></script>
+    <script src="Carousel%20Template%20for%20Bootstrap_files/bootstrap.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="Carousel%20Template%20for%20Bootstrap_files/holder.js"></script>
+  
+	<script src="./src/mainPage.js"></script>
+	<script src="./src/wish.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link rel="icon" href="https://i.pinimg.com/originals/20/eb/5c/20eb5c46712c53be1ec5de2ca765ad24.jpg">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -160,51 +186,54 @@
     </style>
     
 </head>
-<body>
+<body onload="MainLoad()">
 	<header>
       
-        <nav class="navbar navbar-expand-sm navbar-dark bg-primary col-12 p-3 border-radius  " style="border-radius: 2px;">
-          <a class="navbar-brand pl-4 pr-4 " href="./MainPage.html"><img src="https://mundofuntastic.com/img/tienda-oficial-funko.png" alt="" style="height: 40px"></a>
+		<nav class="navbar navbar-expand-sm navbar-dark bg-primary col-12 p-3 border-radius  " style="border-radius: 2px;">
+		  <a class="navbar-brand pl-4 pr-4 " href="./MainPage.html"><img src="https://mundofuntastic.com/img/tienda-oficial-funko.png" alt="" style="height: 40px"></a>
    
-          
-          <form class="form-inline my-2 my-lg-0 col-6 d-flex">
-              <input class="form-control  w-75" type="text" placeholder="Encuentra los mejores precios " required>
-              <button class="btn btn-outline-success   ml-2 pt-1  border-white text-white " type="submit">Buscar</button>
-          </form>
+		  
+		  <form class="form-inline my-2 my-lg-0 col-6 d-flex">
+			  <input class="form-control  w-75" type="text" placeholder="Encuentra los mejores precios " required>
+			  <button class="btn btn-outline-success   ml-2 pt-1  border-white text-white " type="submit " ><a href="./search.html" class="text-light">Buscar</a></button>
+		  </form>
   
   
   
   
-          <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-              aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
+		  <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+			  aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"></span>
+		  </button>
   
-          <div class="collapse navbar-collapse" id="collapsibleNavId  ">
-              <ul class="navbar-nav  ml-5 mt-2 mt-lg-0 ml-auto ">
-                
-                
-                  <li class="nav-item dropdown ">
-                      <a class="nav-link dropdown-toggle  pr-4" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi cuenta</a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownId">
-                          <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#modelId">Ingresar</a>
-                          <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#modelId2" >Registro</a>
-                          <hr>
-                          <a class="dropdown-item" href="orders.html">Mis pedidos</a>
-  
-                      </div>
-                  </li>
-                  <li class="nav-item active pr-4">
-                      <a class="nav-link" href="shopping_cart.html"><i class="fas fa-shopping-cart      "></i> <span class="sr-only">(current)</span>2</a>
-                  </li>
-              </ul>
-              
-          </div>
-      </nav>
-          
-
-    </header>
-    
+		  <div class="collapse navbar-collapse" >
+			  <ul class="navbar-nav  ml-5 mt-2 mt-lg-0 ml-auto " id="collapsibleNavIdContainer">
+				
+				
+				  <li class="nav-item dropdown ">
+					  <a class="nav-link dropdown-toggle  pr-4" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi cuenta</a>
+					  <div class="dropdown-menu" aria-labelledby="dropdownId">
+						  <a class="dropdown-item" href="./log.html"  >Ingresar</a>
+						  <a class="dropdown-item" href="./register.html"  >Registro</a>
+						  
+						  
+						  <hr>
+						  <a class="dropdown-item" href="./createProduct.html">publicar producto</a>
+						  <a class="dropdown-item" href="./wishlist.html"   >wishlist</a>
+						  <a class="dropdown-item" href="orders.html">Mis pedidos</a>
+						  <a class="dropdown-item" href="./profile.html">Perfil</a>
+					  </div>
+				  </li>
+				  <li class="nav-item active pr-4">
+					  <a class="nav-link" href="shopping_cart.html" id="cartID"><i class="fas fa-shopping-cart      "></i> <span class="sr-only" >(current)</span></a>
+				  </li>
+			  </ul>
+			  
+		  </div>
+	  </nav>
+		
+	  
+	  </header>
 	<div class="cart-wrap">
 		<div class="container">
 	        <div class="row">
@@ -214,14 +243,14 @@
 				        <table cellpadding="0" cellspacing="0" border="0" width="100%">
 				        	<thead>
 					        	<tr>
-					        		<th width="45%">Product Name</th>
+					        		<th width="45%">Product</th>
 					        		<th width="15%">Unit Price</th>
 					        		<th width="15%">Stock Status</th>
 					        		<th width="15%"></th>
 					        		<th width="10%"></th>
 					        	</tr>
 					        </thead>
-					        <tbody>
+					        <tbody id="wishCont">
 					        	<tr>
 					        		<td width="45%">
 					        			<div class="display-flex align-center">

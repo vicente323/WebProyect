@@ -34,19 +34,19 @@ if(token!=undefined){
 
         
 
-     console.log(res.status)
+    //  console.log(res.status)
 
 
      if(res.status==401){
 
 
-        console.log("Not logged",res)
+        console.log("Not logged validated",res)
         return false
      }
      else{
 
 
-        console.log("logged")
+        console.log("logged validated")
         return true
      }
     
@@ -58,7 +58,7 @@ else{
 
 
         
-    console.log("Not logged")
+    console.log("Not logged validated")
     return false
 }
 
@@ -94,7 +94,36 @@ else{
 
 */
 
+ async function calculateShoppingCart(){
+  
+    if(await validateLogin()){
+        let token=localStorage.getItem('token') 
+        let res = await fetch('/cart',{
+    
+    
+            method:'POST',
+            headers:{
+                "Content-Type":" application/json"
+            },
+            body: JSON.stringify({token})
+        })
+         let prdcts=(await res.json())
 
+    
+        return (prdcts.length)
+
+
+
+    }
+    else{
+
+        return 0;
+    }
+
+
+
+
+ }
 
 
 async function  MainLoad(){
@@ -103,10 +132,11 @@ async function  MainLoad(){
 
     */
 
-
+    let cartNumber=await calculateShoppingCart()
+ 
     if( await validateLogin()){
 
-        
+       
         let dropMenu= document.getElementById("collapsibleNavIdContainer")
         let inner =` 
       
@@ -127,7 +157,7 @@ async function  MainLoad(){
                      </div>
                  </li>
                  <li class="nav-item active pr-4">
-                     <a class="nav-link" href="shopping_cart.html"><i class="fas fa-shopping-cart      "></i> <span class="sr-only">(current)</span>2</a>
+                     <a class="nav-link" href="shopping_cart.html"><i class="fas fa-shopping-cart "  ></i> <span class="sr-only">(current)</span>${cartNumber}</a>
                  </li>
 
            
@@ -136,8 +166,8 @@ async function  MainLoad(){
          dropMenu.innerHTML=inner;
      
      
-     
-     
+        
+        
      }
      
      else{
@@ -158,21 +188,19 @@ async function  MainLoad(){
                       </div>
                   </li>
                   <li class="nav-item active pr-4">
-                      <a class="nav-link" href="shopping_cart.html"><i class="fas fa-shopping-cart      "></i> <span class="sr-only">(current)</span>2</a>
+                      <a class="nav-link" href="log.html"><i class="fas fa-shopping-cart"  ></i> <span class="sr-only">(current)</span>${cartNumber}</a>
                       </li>
 
                `
           dropMenu.innerHTML=inner;
       
-      
+        
       
       
       }
-     
-     
-
-
+ 
+      
+      
 
 }
-
 

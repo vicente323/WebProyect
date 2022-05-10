@@ -2,7 +2,7 @@
 @id = c5O7tMsGoRKP2oy8u7w56
 
 
-@token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRoZWJlamFyYW5vIiwiZW1haWwiOiJiZWphcmFubzMyM0B0ZXN0LmNvbSIsImlhdCI6MTY1MjE0MDQxNCwiZXhwIjoxNjUyMTQyODE0fQ.i2atiRAF4lxUlnp_5RizngZObEWHFWB1ntytEDRd7Qk"
+@token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRoZWJlamFyYW5vIiwiZW1haWwiOiJiZWphcmFubzMyM0B0ZXN0LmNvbSIsImlhdCI6MTY1MjE0ODc2NSwiZXhwIjoxNjUyMTUxMTY1fQ.oehCeoM3IsStsrW-_yPbn2GyD3reElpF8_kNGgEEucw"
   
 
 
@@ -17,8 +17,9 @@ Content-Type: application/json
     "name":"Funko testing con loggin de tokens final final ",
     "descripcion":"Funko test con tokens 22",
     "category":"tokens",
-    "price":20111,
-    "stock":1101,
+    "price":199,
+    "stock":2,
+    "image":"https://www.collinsdictionary.com/images/full/banana_64728013.jpg",
     "token":{{token}}
 }
 ###
@@ -69,9 +70,10 @@ Content-Type: application/json
 }
 
 
-###
+###  El post es el get de la wishlist ya que fetch es kk y no deja mandar body en gets 
 
-PUT {{host}}/wishlist
+
+POST {{host}}/wishlist
 Content-Type: application/json
 
 {
@@ -122,9 +124,9 @@ Content-Type: application/json
 
 
 
-###
+### Cambiamos este metodo por que fetch no nos deja mandar el body y me da foljera cambiar mas cosas xd
 
-GET {{host}}/cart
+POST {{host}}/cart
 Content-Type: application/json
 
 {
