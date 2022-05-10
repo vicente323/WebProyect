@@ -10,19 +10,21 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
     <style>
-       body {
+        body {
 
-        background-image: url(wavelog2.svg);
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
+            background-image: url(wavelog2.svg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
 
-}
+        }
+
         h1 {
             color: #0E1641;
         }
@@ -70,7 +72,7 @@
 
 <body>
     <!--navbar-->
-    
+
     <!--fin navbar-->
 
 
@@ -81,30 +83,34 @@
             <div class="form-group ">
                 <div class="row ">
                     <div class="col-md-12 mb-4">
-                        <input required type="text" class="form-control text-light" placeholder="Nombre(s)" aria-label="Username"
-                            aria-describedby="basic-addon1" />
-                        <br>
-                        <input required type="text" class="form-control  text-light" placeholder="Apellidos" aria-label="Username"
-                            aria-describedby="basic-addon1" />
-                        <br>
-                        <input required type="email" class="form-control  text-light" placeholder="Tu correo" aria-label="Username"
-                            aria-describedby="basic-addon1" />
-                        <br>
-                        <input required type="password" class="form-control  text-light" placeholder="Contraseña" aria-label="Username"
-                            aria-describedby="basic-addon1" />
-                        <br>
-                        <input  required type="password" class="form-control  text-light" placeholder="Confirmar contraseña"
+                        <input id="nombre" required type="text" class="form-control text-light" placeholder="Nombre(s)"
                             aria-label="Username" aria-describedby="basic-addon1" />
                         <br>
-                        <button id="registrar" type="submit" class="btn btn-success btn-block">Registrarse</button>
+                        <input id="apellido" required type="text" class="form-control  text-light" placeholder="Apellidos"
+                            aria-label="Username" aria-describedby="basic-addon1" />
+                        <br>
+                        <input id="nusuario" required type="text" class="form-control  text-light" placeholder="Tu nombre de usuario"
+                            aria-label="Username" aria-describedby="basic-addon1" />
+                        <br>
+                        <input id="correo" required type="email" class="form-control  text-light" placeholder="Tu correo"
+                            aria-label="Username" aria-describedby="basic-addon1" />
+                        <br>
+                        <input id="passw" required type="password" class="form-control  text-light" placeholder="Contraseña"
+                            aria-label="Username" aria-describedby="basic-addon1" />
+                        <br>
+                        <input id="cpassw" required type="password" class="form-control  text-light"
+                            placeholder="Confirmar contraseña" aria-label="Username" aria-describedby="basic-addon1" />
+                        <br>
+                        <button id="registrar" type="submit" class="btn btn-success btn-block"
+                            onclick="guardarUsuario(event)">Registrarse</button>
                     </div>
-
                 </div>
             </div>
         </form>
     </div>
 
     <!-- Optional JavaScript -->
+    <script src="/public/src/register.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

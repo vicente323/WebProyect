@@ -234,16 +234,21 @@ app.delete('/users/:id', async (req, res) => {
 
 app.post('/users', async (req, res) => {
     console.log(req.body);
+    console.log('saludos jeje');
     let newUser = {};
-    let { name, email, username, password } = req.body;
+    let { name, email, username, password, cpassword } = req.body;
 
     if (name && email && username) {
-        newUser.name = name;
+        if(password == cpassword){
+            newUser.name = name;
         newUser.email = email;
         newUser.username = username;
         newUser.password = password;
         let doc = await User.saveUser(newUser);
         res.status(201).send(doc);
+        }else{
+            res.status(400).send("Las contraseñas no coinciden")
+        }     
     } else {
         res.status(400).send("Faltan datos")
     }

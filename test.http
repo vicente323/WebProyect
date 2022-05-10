@@ -100,10 +100,11 @@ POST {{host}}/users
 Content-Type: application/json
 
  {
-    "name": "Vicente Test",
-    "username": "Thebejarano",
-    "email": "bejarano323@test.com",
-    "password": "testpassword"
+    "name": "Humberto Peñuelas 6",
+    "username": "Humberto8",
+    "email": "humbertpal8@test.com",
+    "password": "Amontillado",
+    "cpassword": "Amontillado"
   }
 
 ### 
