@@ -38,7 +38,12 @@ wishlistSchema.statics.getList=async(username)=>{
     return list
 
 }
+wishlistSchema.statics.deleteToList=async(username,updatedWishlsit)=>{
 
+
+    return await wishlist.findOneAndUpdate(username,{list:updatedWishlsit});
+
+}
 wishlistSchema.statics.addToList=async(username,updatedWishlsit)=>{
 
 

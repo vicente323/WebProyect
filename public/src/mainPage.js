@@ -14,6 +14,9 @@ function logOut(){
 
 }
 
+
+
+
 async function  validateLogin(){
 
 let token =   localStorage.getItem('token')

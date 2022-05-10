@@ -1,4 +1,27 @@
+async function deleteWish(id){
+    event.preventDefault()
+    
+    let token =   localStorage.getItem('token')
+    console.log("tried to delete",id)
+    let body= {   
+        token:token,
+        productID :id
+        
+    }
+    let req= await fetch('/wishlist',{
+        
+        method:'DELETE',
+        headers:{
+            "Content-Type":" application/json"
+        },
+       body:JSON.stringify(body)
 
+    })
+
+    /*to show changes in the shopping cart*/
+    loadWishlist()
+
+}
 
 async function  loadWishlist(){
     let token= localStorage.getItem("token")
@@ -57,7 +80,7 @@ async function  loadWishlist(){
                             <td width="15%" class="price">${current.price}</td>
                             <td width="15%"><span class="in-stock-box">${current.stock}</span></td>
                             <td width="15%"><button class="round-black-btn small-btn">Add to Cart</button></td>
-                            <td width="10%" class="text-center"><a href="#" class="trash-icon"><i class="far fa-trash-alt"></i></a></td>
+                            <td width="10%" class="text-center"><a href="#" class="trash-icon" onclick="deleteWish('${wishlist.list[i].producto}')"><i class="far fa-trash-alt"></i></a></td>
                         </tr>`
 
         }
@@ -92,6 +115,5 @@ async function  loadWishlist(){
 
 
 */
-
 
 loadWishlist()

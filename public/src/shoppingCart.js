@@ -27,7 +27,6 @@
 */
 // `  `
 
-
 async function loadCart(){
 
 
@@ -101,7 +100,7 @@ async function loadCart(){
 
 
 
-                       <div class="col">&dollar; ${current.price} <span class="close">&#10005;</span></div>
+                       <div class="col">&dollar; ${current.price} <span class="close" onclick="deleteFromCart('${prdcts[i].producto}')">&#10005;</span></div>
                    </div>
                </div>`
                total=total+current.price
@@ -128,4 +127,31 @@ async function loadCart(){
            </div>
 
 */
+
+
+async function deleteFromCart(id){
+    event.preventDefault()
+    
+    let token =   localStorage.getItem('token')
+    console.log("tried to delete",id)
+    let body= {   
+        token:token,
+        productID :id
+        
+    }
+    let req= await fetch('/cart',{
+        
+        method:'DELETE',
+        headers:{
+            "Content-Type":" application/json"
+        },
+       body:JSON.stringify(body)
+
+    })
+
+    /*to show changes in the shopping cart*/
+    loadCart()
+
+}
+
 loadCart()

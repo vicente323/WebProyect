@@ -300,6 +300,48 @@ app.post('/cart', auth,async(req,res)=>{
 
 })
 
+app.delete('/cart',auth,async(req,res)=>{
+
+    let query={username:req.username,email:req.email}
+    let {productID}=req.body;
+    let user = await User.findUser(query)
+    // console.log(user)
+
+    user=user[0]
+
+    let cart=user.carrito
+
+    let indx;
+    for(let i=0; i<cart.length; i++){
+
+
+        
+        if(productID==cart[i].producto){
+
+            indx=i;
+        }
+
+
+    }
+
+    if(indx!=undefined){
+        console.log("producto  existe")
+        cart.splice(indx,1)
+
+
+        console.log(cart)
+        await  User.updateCart(user,cart)
+        res.send(cart).status(202)
+    }
+    else{
+
+        console.log("el producto no existe")
+
+        res.status(404).send({error: "no existe el producto"})
+    }
+    
+})
+
 app.put('/cart',auth,async(req,res)=>{
     
     
@@ -423,7 +465,47 @@ app.post('/wishlist',auth,async(req,res)=>{
     res.send(wish).status(202)
 })
 
+app.delete('/wishlist',auth,async(req,res)=>{
+    
+    let username={owner:req.username}
+    
+    let {productID}=req.body;
 
+    let wish= await wishlist.getList(username);
+
+    wish=wish[0]
+    wish=wish.list;
+    let indx;
+    for(let i=0; i<wish.length; i++){
+
+
+        
+        if(productID==wish[i].producto){
+
+            indx=i;
+        }
+
+
+    }
+
+    if(indx!=undefined){
+        console.log("producto  existe")
+        wish.splice(indx,1)
+        
+
+        console.log(wish)
+        await wishlist.deleteToList(username,wish)
+        res.send(wish).status(202)
+    }
+    else{
+
+        console.log("el producto no existe")
+
+        res.status(404).send({error: "no existe el producto"})
+    }
+    
+
+})
 
 
 app.listen(port, () => {
