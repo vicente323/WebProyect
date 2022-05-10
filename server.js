@@ -102,6 +102,23 @@ app.delete('/products/:id' ,async (req,res)=>{
     res.status(404).send({error:"Notfound"})
 })
 
+app.get('/products/:id',async (req,res)=>{
+
+    let id= req.params.id
+    let ret = await product.getProductById(id)
+    if(ret){
+
+
+        res.send(ret)
+    }
+    else{
+
+        res.status(404).send({error:"Notfound"})
+        return
+    }
+
+})
+
 app.put('/products/:id',async (req,res)=>{
     console.log("------Put------")
     let{name,price,description,category,stock}=req.body;

@@ -90,6 +90,7 @@ async function findProducts(query){
 }
 // ! add db methods here
 
+
 productsSchema.statics.getProducts=async (query)=>{
     //* query is an object 
     return await  product.find( query)
@@ -106,6 +107,18 @@ productsSchema.statics.addProduct= async(newProduct)=>{
 
 
 }
+
+
+productsSchema.statics.getProductById=async (id)=>{
+
+    return await product.findOne({id:id})
+
+
+
+
+}
+
+
 productsSchema.statics.deletePoduct= async(id)=>{
     let resp = await product.findByIdAndDelete(id)
     return resp

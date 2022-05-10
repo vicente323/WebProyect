@@ -121,7 +121,7 @@ async function  MainLoad(){
                          <a class="dropdown-item" href="./wishlist.html"   >wishlist</a>
                          <a class="dropdown-item" href="orders.html">Mis pedidos</a>
                          <a class="dropdown-item" href="./profile.html">Perfil</a>
-                         <a class="dropdown-item" href="./profile.html">Perfil</a>
+                         
                          <a class="dropdown-item" onclick="logOut()">Log Out</a>
                          
                      </div>

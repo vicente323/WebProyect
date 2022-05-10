@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <!-- our scrypt -->
+    <script src="./src/mainPage.js"></script>
     <title>Shopping cart</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -212,7 +214,7 @@
     </style>
 </head>
 
-<body>
+<body onload="MainLoad()">
     <header>
       
         <nav class="navbar navbar-expand-sm navbar-dark bg-primary col-12 p-3 border-radius  " style="border-radius: 2px;">
@@ -233,7 +235,7 @@
           </button>
   
           <div class="collapse navbar-collapse" id="collapsibleNavId  ">
-              <ul class="navbar-nav  ml-5 mt-2 mt-lg-0 ml-auto ">
+              <ul class="navbar-nav  ml-5 mt-2 mt-lg-0 ml-auto "  id="collapsibleNavIdContainer">
                 
                 
                   <li class="nav-item dropdown ">
@@ -279,8 +281,7 @@
                             <div class="row text-muted">Platano Chiapas</div>
                             <div class="row">Platano traido de chiapas</div>
                         </div>
-                        <div class="col"> <input type="number" id="quantity" name="quantity" min="0" max="5"
-                                placeholder="0">
+                        <div class="col"> 
                         </div>
 
 
@@ -299,8 +300,7 @@
                             <div class="row text-muted">Mermelada de fresa</div>
                             <div class="row">Mermelada de fresa marca Jaques</div>
                         </div>
-                        <div class="col"> <input type="number" id="quantity" name="quantity" min="0" max="5"
-                                placeholder="0">
+                        <div class="col"> 
                         </div>
 
 
@@ -318,8 +318,8 @@
                             <div class="row text-muted">Manzana Red delicious</div>
                             <div class="row">Manzanas traidas del estado de Washington</div>
                         </div>
-                        <div class="col"> <input type="number" id="quantity" name="quantity" min="0" max="5"
-                                placeholder="0">
+                        <div class="col"> 
+
                         </div>
                         <div class="col">&dollar; 50.00 <span class="close">&#10005;</span></div>
                     </div>
