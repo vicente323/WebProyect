@@ -4,6 +4,13 @@
 
 
 */
+function runSearch(){
+    let query= document.getElementById("Search")
+    console.log(query.value)
+    sessionStorage.setItem("search",query.value)
+
+
+}
 
 function logOut(){
 
@@ -130,6 +137,7 @@ else{
 
 
 async function  MainLoad(){
+    
     /* 
         * La idea de esta funcion es ejecutarse cuando se abra la pagina validando el token y modificando las opciones del usuario en base a si se encuentra loggeado o no 
 

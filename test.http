@@ -2,7 +2,7 @@
 @id = c5O7tMsGoRKP2oy8u7w56
 
 
-@token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRoZWJlamFyYW5vIiwiZW1haWwiOiJiZWphcmFubzMyM0B0ZXN0LmNvbSIsImlhdCI6MTY1MjE1OTcxMiwiZXhwIjoxNjUyMTYyMTEyfQ.5TqLkfrY8MaVha_i4aXpl6y16zOePCsSSxt-mvQPedo"
+@token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRoZWJlamFyYW5vIiwiZW1haWwiOiJiZWphcmFubzMyM0B0ZXN0LmNvbSIsImlhdCI6MTY1MjIyMDA4NiwiZXhwIjoxNjUyMjIyNDg2fQ.Okcp4F-FcBCW91dGl_TaEnOBdDMP5BvrzEM80WcRX-E"
   
 
 
@@ -14,38 +14,38 @@ Content-Type: application/json
 
 {
  
-    "name":"Funko testing con loggin de tokens final final ",
-    "descripcion":"Funko test con tokens 22",
-    "category":"tokens",
-    "price":199,
+    "name":"Funko deadpool",
+    "descripcion":"Funko de deadpool Nuevo",
+    "category":"Funko",
+    "price":499,
     "stock":2,
     "image":"https://www.collinsdictionary.com/images/full/banana_64728013.jpg",
     "token":{{token}}
 }
 ###
 
-GET {{host}}/products?max=300&min=100
+GET {{host}}/products?min=2000&max=3000
 
 ###
 
-GET {{host}}/products/
+GET {{host}}/products/0SBKNeNTeVv9ZMgiU-VJI
 
 ###
 DELETE {{host}}/products/6264c4e7e24feb9ddb4a3d66
 
 ###
 
-PUT {{host}}/products/6264c4c1c4104d11a58c49f4
+PUT {{host}}/products/zBJK3nBe6shzBWfku1TNf
 Content-Type: application/json
-
 
 {
  
-    "name":"Funko testing desde el put",
-    "description":"Funko test desde el put",
-    "category":"Test description desde el put",
-    "price":290,
-    "stock":25
+    "name":"Funko deadpool ",
+    "descripcion":"Funko de deadpool Nuevo",
+    "category":"Funko",
+    "price":499,
+    "stock":2,
+    "image":"https://cdn140.picsart.com/238899976006202.jpg?type=webp&to=crop&r=256"
 
   
 }

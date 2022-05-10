@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <script src="./src/createProduct.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -71,26 +71,35 @@
     <div class="container pt-4 ">
         <form>
             <div class="col-md-12 mb-4">
-                <input type="text" class="form-control" placeholder="Codigo" aria-label="Username"
-                    aria-describedby="basic-addon1" />
+                
                 <input type="text" class="form-control" placeholder="Nombre" aria-label="Username"
-                    aria-describedby="basic-addon1" />
+                    aria-describedby="basic-addon1" required id="nameId"/>
 
-                <textarea name="message" rows="12" cols="30" placeholder="Descripcion"></textarea>
+                <div class="dropdown  ">
+                        <button class="btn  dropdown-toggle mb-5 " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Categorias
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" onclick="setCategory('Funko')">Funko</a>
+                          <a class="dropdown-item" onclick="setCategory('keychains')">keychains</a>
+                          <a class="dropdown-item" onclick="setCategory('Others')">Others</a>
+                        </div>
+                </div>
+                <textarea name="message" rows="12" cols="30" placeholder="Descripcion" required id="descId"></textarea>
 
                 <input type="text" class="form-control" placeholder="Unidad de medida" aria-label="Username"
-                    aria-describedby="basic-addon1" />
+                    aria-describedby="basic-addon1" required id="unidadId"/>
 
                 <input type="number" class="form-control" placeholder="Precio" aria-label="Username"
-                    aria-describedby="basic-addon1" />
+                    aria-describedby="basic-addon1" min="1" required id="precioId"/>
 
                 <input type="text" class="form-control" placeholder="Imagen (url)" aria-label="Username"
-                    aria-describedby="basic-addon1" />
+                    aria-describedby="basic-addon1" required  id="imageId"/>
 
-                <input type="text" class="form-control" placeholder="Stock disponible" aria-label="Username"
-                    aria-describedby="basic-addon1" />
+                <input type="number" class="form-control" placeholder="Stock disponible" aria-label="Username"
+                    aria-describedby="basic-addon1" min="1" required id="stockId" />
 
-                <button class="btn btn-block">Actualizar</button>
+                <button class="btn btn-block" onclick="createProduct()">crear</button>
             </div>
         </form>
     </div>

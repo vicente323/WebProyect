@@ -121,11 +121,11 @@ app.get('/products/:id',async (req,res)=>{
 
 app.put('/products/:id',async (req,res)=>{
     console.log("------Put------")
-    let{name,price,description,category,stock}=req.body;
-
+    let{name,price,descripcion,category,stock,image}=req.body;
+    console.log(req.body)
    // let productowner=headers.productowner //! Tenemos que validar en la base de datos que exista el product owner 
-    if(name&&price&&description&&category&&stock){
-
+    if(name&&price&&descripcion&&category&&stock&&image){
+      
         let productUpdated=req.body
        // productUpdated.productOwner=productowner
 
@@ -144,7 +144,7 @@ app.put('/products/:id',async (req,res)=>{
         
     }   
     
-    res.status(404).send({error:"Notfound"})
+    res.status(404).send({error:"Error"})
  
 
 })

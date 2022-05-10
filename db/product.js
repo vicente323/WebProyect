@@ -46,6 +46,7 @@ let productsSchema= mongoose.Schema({
     category:{
         
         type:String,
+        enum:['Funko','keychains','Others'],
         required: true
     },
 
@@ -131,7 +132,7 @@ productsSchema.statics.deletePoduct= async(id)=>{
 productsSchema.statics.updateProduct=async(id,updatedProduct)=>{
   
 
-    let resp = await product.findByIdAndUpdate(id,updatedProduct)
+    let resp = await product.findOneAndUpdate({id:id},updatedProduct)
     return resp
 }
 
