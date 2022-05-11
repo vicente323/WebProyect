@@ -15,7 +15,7 @@ function runSearch(){
 function logOut(){
 
     localStorage.removeItem('token')
-    window.location.replace("http://localhost:3100/MainPage.html");
+    window.location.replace("MainPage.html");
 
 
 

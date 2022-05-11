@@ -42,7 +42,7 @@ async function redirectToProduct(id){
     event.preventDefault()
  
     sessionStorage.setItem("product",id)
-    window.location.replace("http://localhost:3100/Product.html");
+    window.location.replace("Product.html");
 }   
 
 
