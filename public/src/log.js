@@ -43,7 +43,7 @@ async function loginToPage(){
     if(res.token){
 
         // * Se nos redirecciona a la main page una vez que nos hemos loggeado 
-        window.location.replace("http://localhost:3100/MainPage.html");
+        window.location.replace("/MainPage.html");
 
 
     }
