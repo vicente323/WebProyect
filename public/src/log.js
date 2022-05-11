@@ -36,16 +36,8 @@ async function loginToPage(){
         alert(res.error)
     }
     if(res.token){
-        window.location.replace("http://localhost:3100/MainPage.html");
-
-
+        window.location.replace("/MainPage.html");
     }
-
-
-
-
-    
-
 }
 
 

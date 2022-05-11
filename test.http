@@ -2,8 +2,19 @@
 @id = c5O7tMsGoRKP2oy8u7w56
 
 
-@token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRoZWJlamFyYW5vIiwiZW1haWwiOiJiZWphcmFubzMyM0B0ZXN0LmNvbSIsImlhdCI6MTY1MjE0ODc2NSwiZXhwIjoxNjUyMTUxMTY1fQ.oehCeoM3IsStsrW-_yPbn2GyD3reElpF8_kNGgEEucw"
+@token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRoZWJlamFyYW5vMiIsImVtYWlsIjoiYmVqYXJhbm8zMjMyQHRlc3QuY29tIiwiaWF0IjoxNjUyMjQ0MTU0LCJleHAiOjE2NTIyNDY1NTR9.X9AEYhPV_1K18XpEHH-cdqTORJw7dYPVJlHyr_hGWys"
   
+### para tener los usernamer
+
+PUT {{host}}/username
+Content-Type: application/json
+
+{
+ 
+    "token":{{token}}
+}
+###
+
 
 
 ### La idea es que el product owner sea el token 
@@ -14,37 +25,53 @@ Content-Type: application/json
 
 {
  
-    "name":"Funko testing con loggin de tokens final final ",
-    "descripcion":"Funko test con tokens 22",
-    "category":"tokens",
-    "price":199,
+    "name":"Funko deadpool",
+    "descripcion":"Funko de deadpool Nuevo",
+    "category":"Funko",
+    "price":499,
     "stock":2,
     "image":"https://www.collinsdictionary.com/images/full/banana_64728013.jpg",
     "token":{{token}}
 }
 ###
 
-GET {{host}}/products?max=300&min=100
+GET {{host}}/products?min=2000&max=3000
+
 
 ###
+GET {{host}}/QA/zBJK3nBe6shzBWfku1TNf
+###
 
-GET {{host}}/products/XB4rnZ1b_O0cwIqyH2IdR
+GET {{host}}/products/-0K4dQEE6PQ5mNROuViDr
+
+### Ya se puede buscar por owner 
+
+GET {{host}}/products?owner=Thebejarano
 
 ###
 DELETE {{host}}/products/X58A3gwas6ZPX9cKY2NP5
 
 ###
 
-PUT {{host}}/products/6264c4c1c4104d11a58c49f4
+PUT {{host}}/products/-0K4dQEE6PQ5mNROuViDr
 Content-Type: application/json
 
 {
  
+<<<<<<< HEAD
     "name":"Nuevo Funko 3.0",
     "description":"Nuevo pubto 2.0",
     "category":"Juguetillos",
     "price":290,
     "stock":25
+=======
+    "name":"Funko deadpool ",
+    "descripcion":"Funko de deadpool Nuevo",
+    "category":"Funko",
+    "price":499,
+    "stock":2,
+    "image":"https://cdn140.picsart.com/238899976006202.jpg?type=webp&to=crop&r=256"
+>>>>>>> 1492fd1b16b037b6cd352a0fd036ee89d6f5214a
 
   
 }
@@ -85,7 +112,7 @@ Content-Type: application/json
 
 {
     "token":{{token}},
-    "productID" :"5QYKUWxW69G7hiPy5UmHZ"
+    "productID" :"-0K4dQEE6PQ5mNROuViDr"
 
 
 }
@@ -103,15 +130,34 @@ Content-Type: application/json
 
 
 }
+#####
+
+
+DELETE {{host}}/wishlist
+Content-Type: application/json
+
+{   
+    "token":  {{token}},
+    "productID" :"-0K4dQEE6PQ5mNROuViDr"
+    
+    
+}
+
+
+
 
 ###
+
+
+
+
 
 POST {{host}}/login
 Content-Type: application/json
 
 {
     "pasword":"testpassword",
-    "username":"Thebejarano"
+    "username":"Thebejarano2"
 
 
 }
@@ -122,11 +168,18 @@ POST {{host}}/users
 Content-Type: application/json
 
  {
+<<<<<<< HEAD
     "name": "Humberto Peñuelas",
     "username": "Humberto2",
     "email": "humbertpal8@test.com",
     "password": "Amontillado",
     "cpassword": "Amontillado"
+=======
+    "name": "Vicente Test 2",
+    "username": "Thebejarano2",
+    "email": "bejarano3232@test.com",
+    "password": "testpassword"
+>>>>>>> 1492fd1b16b037b6cd352a0fd036ee89d6f5214a
   }
 
 ### 
@@ -158,18 +211,31 @@ Content-Type: application/json
 
 
 ### Los tokens de este metodo caducan por lo que hay que cambiarlo cada x tiempo 
+
+###Agregar al carrito
 PUT {{host}}/cart
 Content-Type: application/json
 
 {
     "token":{{token}},
-    "productID" :"I33XrH58fq-aeto5a_ugq",
+    "productID" :"96WUfkHQ_URhlFwPQGeRx",
     "cant": 1
 
 
 }
+###
 
+DELETE {{host}}/cart
+Content-Type: application/json
 
+{   
+    "token":  {{token}},
+    "productID" :"4GV5KJwwR2teNfO4LdxB6"
+    
+    
+}
+
+####    96WUfkHQ_URhlFwPQGeRx 4GV5KJwwR2teNfO4LdxB6
 
 ### Cambiamos este metodo por que fetch no nos deja mandar el body y me da foljera cambiar mas cosas xd
 
@@ -179,3 +245,9 @@ Content-Type: application/json
 {
     "token":  {{token}}
 }
+
+
+
+
+
+

@@ -4,15 +4,25 @@
 
 
 */
+function runSearch(){
+    let query= document.getElementById("Search")
+    console.log(query.value)
+    sessionStorage.setItem("search",query.value)
+
+
+}
 
 function logOut(){
 
     localStorage.removeItem('token')
-    window.location.replace("http://localhost:3100/MainPage.html");
+    window.location.replace("MainPage.html");
 
 
 
 }
+
+
+
 
 async function  validateLogin(){
 
@@ -127,6 +137,7 @@ else{
 
 
 async function  MainLoad(){
+    
     /* 
         * La idea de esta funcion es ejecutarse cuando se abra la pagina validando el token y modificando las opciones del usuario en base a si se encuentra loggeado o no 
 
@@ -151,7 +162,7 @@ async function  MainLoad(){
                          <a class="dropdown-item" href="./wishlist.html"   >wishlist</a>
                          <a class="dropdown-item" href="orders.html">Mis pedidos</a>
                          <a class="dropdown-item" href="./profile.html">Perfil</a>
-                         
+                         <a class="dropdown-item" href="./questions.html">Preguntas</a>
                          <a class="dropdown-item" onclick="logOut()">Log Out</a>
                          
                      </div>

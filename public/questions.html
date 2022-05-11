@@ -12,8 +12,7 @@
     <script src="Carousel%20Template%20for%20Bootstrap_files/holder.js"></script>
   
 	<script src="./src/mainPage.js"></script>
-	<script src="./src/wish.js"></script>
-
+    <script src="./src/questions.js"></script>
 
 
 
@@ -38,7 +37,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wishlist</title>
+    <title>preguntas</title>
 
     <style>
         
@@ -238,19 +237,17 @@
 		<div class="container">
 	        <div class="row">
 			    <div class="col-md-12">
-			        <div class="main-heading mb-10">My wishlist</div>
+			        <div class="main-heading mb-10">Preguntas Por responder</div>
 			        <div class="table-wishlist">
 				        <table cellpadding="0" cellspacing="0" border="0" width="100%">
 				        	<thead>
 					        	<tr>
 					        		<th width="45%">Product</th>
-					        		<th width="15%">Unit Price</th>
-					        		<th width="15%">Stock</th>
-					        		<th width="15%"></th>
-					        		<th width="10%"></th>
+					        		<th width="45%">Pregunta</th>
+					        		<th width="10%">Responder</th>
 					        	</tr>
 					        </thead>
-					        <tbody id="wishCont">
+					        <tbody id="questionsCont">
 			
 				        	</tbody>
 				        </table>
@@ -260,4 +257,32 @@
 		</div>
 	</div>
 </body>
+
+
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Respuesta Nueva</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                
+                            <input class="col-12"type="text" name="" id="resId" placeholder="Escribe tu respuesta" required>
+                            </div>
+                            <div class="modal-footer">
+                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                            <button type="button submit" class="btn btn-primary" data-dismiss="modal" onclick="putAnswer()">Save changes</button>
+
+                        
+
+                    </div>
+                </div>
+                </div>
+            </div>
 </html>

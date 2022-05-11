@@ -1,19 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Product</title>
-    <link rel="icon" href="https://i.pinimg.com/originals/20/eb/5c/20eb5c46712c53be1ec5de2ca765ad24.jpg">
-    <!-- Required meta tags -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="./Product.css">
-    <!-- Font awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://i.pinimg.com/originals/20/eb/5c/20eb5c46712c53be1ec5de2ca765ad24.jpg">
+    <script src="./src/mainPage.js"></script>
+    <script src="./src/product.js"></script>
+    <title id="titeId">Product</title>
 
-    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body class=" ">
+
+    <!-- Custom styles for this template -->
+    <link href="./Carousel Template for Bootstrap_files/carousel.css" rel="stylesheet">
+ </head>
+  <body data-new-gr-c-s-check-loaded="8.896.0" data-gr-ext-installed="" onload="MainLoad()">
+
     <header>
       
       <nav class="navbar navbar-expand-sm navbar-dark bg-primary col-12 p-3 border-radius  " style="border-radius: 2px;">
@@ -21,8 +27,8 @@
  
         
         <form class="form-inline my-2 my-lg-0 col-6 d-flex">
-            <input class="form-control  w-75" type="text" placeholder="Encuentra los mejores precios " required>
-            <button class="btn btn-outline-success   ml-2 pt-1  border-white text-white " type="submit">Buscar</button>
+            <input class="form-control  w-75" type="text" placeholder="Encuentra los mejores precios " id="Search">
+            <button class="btn btn-outline-success   ml-2 pt-1  border-white text-white " type="submit " onclick="runSearch()" ><a href="./search.html" class="text-light">Buscar</a></button>
         </form>
 
 
@@ -33,32 +39,43 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="collapsibleNavId  ">
-            <ul class="navbar-nav  ml-5 mt-2 mt-lg-0 ml-auto ">
+        <div class="collapse navbar-collapse" >
+            <ul class="navbar-nav  ml-5 mt-2 mt-lg-0 ml-auto " id="collapsibleNavIdContainer">
               
               
                 <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle  pr-4" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi cuenta</a>
+                    <a class="nav-link dropdown-toggle  pr-4"  id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi cuenta</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#modelId">Ingresar</a>
-                        <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#modelId2" >Registro</a>
+                        <a class="dropdown-item" href="./log.html"  >Ingresar</a>
+                        <a class="dropdown-item" href="./register.html"  >Registro</a>
+                        
+                        
                         <hr>
+                        <a class="dropdown-item" href="./createProduct.html">publicar producto</a>
+                        <a class="dropdown-item" href="./wishlist.html"   >wishlist</a>
                         <a class="dropdown-item" href="orders.html">Mis pedidos</a>
-
+                        <a class="dropdown-item" href="./profile.html">Perfil</a>
                     </div>
                 </li>
                 <li class="nav-item active pr-4">
-                    <a class="nav-link" href="shopping_cart.html"><i class="fas fa-shopping-cart      "></i> <span class="sr-only">(current)</span>2</a>
+                    <a class="nav-link" href="shopping_cart.html" id="cartID"><i class="fas fa-shopping-cart      "></i> <span class="sr-only" >(current)</span></a>
                 </li>
             </ul>
             
         </div>
     </nav>
-        
-
-      </header>
       
-    <div class="row      p-5 m-5">
+    
+    </header>
+
+    <main role="main">
+
+
+
+
+
+
+      <div class="row      p-5 m-5"  id="productContainerId" >
         
    
         <div class="container  col-4   d-flex justify-content-center  ">
@@ -72,8 +89,8 @@
         <div class="container   col-4">
             <h1>Corsair CA-9011185-NA Diadema Virtuoso Wireless Carbon, Negro, Grande</h1>
             <hr>
-            <span class=" " style="color:gold;"   >★★★★★</span>
-            <h4 class="pt-2 ">Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat perspiciatis ut provident dolorum harum fugit.</h4>
+            <!-- <span class=" " style="color:gold;"   >★★★★★</span> -->
+            <h4 class="pt-2 ">Descripcion  : Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat perspiciatis ut provident dolorum harum fugit.</h4>
                
             
 
@@ -98,9 +115,13 @@
                     <!-- City -->
                     <p>San Pedro Tlaquepaque, Jal.</p>
                 </div>
-                <input type="number" class="form-control   mt-3  mb-3 " style="width: 30%;" required>
-        
-                <button type="button submit" class="btn btn-warning btn-lg mt-4" style="width: 100%;  margin-bottom: 20%;" > add to cart</button>
+                <!-- <input type="number" class="form-control   mt-3  mb-3 " style="width: 30%;" required> -->
+                <div id="addCartId">
+                    <button type="button " class="btn btn-warning btn-lg mt-4" style="width: 100%;  margin-bottom: 20%;" onclick=" addToCartPrd()" > add to cart</button>
+
+
+                </div>
+               
          
               
 
@@ -119,8 +140,8 @@
     <hr class="m-5 ">
     <div class="d-flex justify-content-center ">
       <div class=" p-5  " style="width: 60%;">
-        <h2>❔ Preguntas y respuestas de clientes </h2>
-        <div class=" mt-4">
+        <h2>❔ Preguntas y respuestas</h2>
+        <div class=" mt-4" id="questionsId">
             <div class="border p-3 m-2 mt-3" style="border-radius: 5px;">
                 
                 <div class="">
@@ -140,62 +161,93 @@
                       <p class="ml-2">Respuesta: Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure voluptatum omnis perspiciatis molestias aspernatur cumque</p>
               </div>
           </div>
-           
+          <button type="button submit" class="btn btn-warning btn-lg mt-4" style="width: 100%;  margin-bottom: 20%;"  > Add to QA</button>
 
         </div>
     </div>
 
     </div>
-          <!-- FOOTER -->
-          <footer class=" " style="   background-image: url(mainwavew.svg); height: 300px;    background-repeat: no-repeat;        background-size: cover;     "  >
-            <div class="row ">
-    
-              <div class="col-4 d-flex justify-content-center text-light " style="margin-top: 150px;" >
-    
-                <div class="mt-5" >
-                  
-                  <p><i class="fab fa-instagram"></i>   Follow us on Instagram</p>
-           
-    
-    
-                </div>
-               
-              </div>
-              <div class="col-4 d-flex justify-content-center text-light" style="margin-top: 150px;">
-    
-                <div class="mt-5">
-               
-                  <p class="ml-5"> <i class="fab fa-facebook-f ml-5"> Follow us on Facebook</i></p>
-          
-    
-    
-                </div>
-               
-              </div>
-              <div class="col-4 d-flex justify-content-center text-light " style="margin-top: 150px;">
-    
-                <div class="mt-5">
-                  
-                  <p> <i class="fab fa-twitter"></i>  Follow us on Twitter</p>
-        
-    
-    
-                </div>
-              </div>
-    
-            
-    
-            </div>
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,224L60,229.3C120,235,240,245,360,245.3C480,245,600,235,720,218.7C840,203,960,181,1080,165.3C1200,149,1320,139,1380,133.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg> -->
-            <!-- <p class="float-right"><a href="#">Back to top</a></p>
-            <p>© 2017-2018 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p> -->
-          </footer>
-    
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </main>
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal">
+        Launch demo modal
+    </button> -->
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Pregunta Nueva</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+        
+                    <input class="col-12"type="text" name="" id="QAid" placeholder="Escribe tu pregunta" required>
+                    </div>
+                    <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                    <button type="button submit" class="btn btn-primary" data-dismiss="modal" onclick="addQA()">Save changes</button>
+
+                
+
+            </div>
+        </div>
+        </div>
+    </div>
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
+    <script src="Carousel%20Template%20for%20Bootstrap_files/jquery-3.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!-- <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="Carousel%20Template%20for%20Bootstrap_files/jquery-slim.js"></script> -->
+    <script src="Carousel%20Template%20for%20Bootstrap_files/popper.js"></script>
+    <script src="Carousel%20Template%20for%20Bootstrap_files/bootstrap.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="Carousel%20Template%20for%20Bootstrap_files/holder.js"></script>
+  
+
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="25" style="font-weight:bold;font-size:25pt;font-family:Arial, Helvetica, Open Sans, sans-serif">500x500</text></svg><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration><svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="25" style="font-weight:bold;font-size:25pt;font-family:Arial, Helvetica, Open Sans, sans-serif">500x500</text></svg></body></html>

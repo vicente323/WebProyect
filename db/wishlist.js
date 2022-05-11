@@ -27,18 +27,34 @@ let  wishlistSchema= mongoose.Schema(
 )
 
 wishlistSchema.statics.getList=async(username)=>{
+    console.log("username get wish:",username.username)
+    console.log("username get wish:",username.owner)
+    let usertosearch=username.username;
+    let list;
+    if(usertosearch==undefined){
+         list=await wishlist.find({owner:username.owner});
+        
+    }
+    else{
+        list=await wishlist.find({owner:usertosearch});
 
-    let list=await wishlist.find(username);
-   
-    if(list===[]){
+
+    }
+    console.log("lista desde get",list)
+    if(list.length==0){
+        console.log("entramos al if")
         console.log("Error Found")
-        let err={Error:"Error Found"}
-        throw err;
+       
     }
     return list
 
 }
+wishlistSchema.statics.deleteToList=async(username,updatedWishlsit)=>{
 
+
+    return await wishlist.findOneAndUpdate(username,{list:updatedWishlsit});
+
+}
 wishlistSchema.statics.addToList=async(username,updatedWishlsit)=>{
 
 

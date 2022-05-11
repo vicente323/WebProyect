@@ -40,9 +40,10 @@ let productsSchema = mongoose.Schema({
         required: true
 
     },
-    category: {
-
-        type: String,
+    category:{
+        
+        type:String,
+        enum:['Funko','keychains','Others'],
         required: true
     },
 
@@ -50,7 +51,16 @@ let productsSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    QA: String 
+    
+    QA:[{
+        pregunta:{
+            type:String
+        },
+        respuesta:{
+
+            type:String
+        }
+    }] 
 
 
 
@@ -61,13 +71,13 @@ async function saveProduct() {
 
 
     let newProduct = {
-        id: nanoid(),
-        name: "TestProduct0",
-        productOwner: "testing",
-        price: 1,
-        stock: 1,
-        category: "testing",
-        QA: ""
+        id:nanoid(),
+        name:"TestProduct0",
+        productOwner:"testing",
+        price:1,
+        stock:1,
+        category:"testing",
+        QA:[]
     }
     let prodToSave = product(newProduct)
     let resp = await prodToSave.save();
@@ -103,7 +113,7 @@ productsSchema.statics.addProduct = async (newProduct) => {
     let prodToSave = product(newProduct)
     let resp = await prodToSave.save()
     return resp;
-
+    
 
 
 }
@@ -121,19 +131,6 @@ productsSchema.statics.getProductById=async (id)=>{
 
 productsSchema.statics.deletePoduct= async(id)=>{
     let resp = await product.findByIdAndDelete(id)
-    return resp
-}
-
-
-
-
-
-
-
-productsSchema.statics.updateProduct = async (id, updatedProduct) => {
-
-
-    let resp = await product.findByIdAndUpdate(id, updatedProduct)
     return resp
 }
 
