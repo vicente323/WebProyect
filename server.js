@@ -101,7 +101,22 @@ app.delete('/products/:id' ,async (req,res)=>{
     }
     res.status(404).send({error:"Notfound"})
 })
+app.get('/QA/:id',async (req,res)=>{
 
+    let id= req.params.id
+    let ret = await product.getProductById(id)
+    if(ret){
+
+
+        res.send(ret.QA)
+    }
+    else{
+
+        res.status(404).send({error:"Notfound"})
+        return
+    }
+
+})
 app.get('/products/:id',async (req,res)=>{
 
     let id= req.params.id

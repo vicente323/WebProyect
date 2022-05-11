@@ -9,7 +9,7 @@
     <link rel="icon" href="https://i.pinimg.com/originals/20/eb/5c/20eb5c46712c53be1ec5de2ca765ad24.jpg">
     <script src="./src/mainPage.js"></script>
     <script src="./src/product.js"></script>
-    <title>Main Page</title>
+    <title id="titeId">Product</title>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <!-- Bootstrap core CSS -->
@@ -115,9 +115,13 @@
                     <!-- City -->
                     <p>San Pedro Tlaquepaque, Jal.</p>
                 </div>
-                <input type="number" class="form-control   mt-3  mb-3 " style="width: 30%;" required>
-        
-                <button type="button submit" class="btn btn-warning btn-lg mt-4" style="width: 100%;  margin-bottom: 20%;" > add to cart</button>
+                <!-- <input type="number" class="form-control   mt-3  mb-3 " style="width: 30%;" required> -->
+                <div id="addCartId">
+                    <button type="button " class="btn btn-warning btn-lg mt-4" style="width: 100%;  margin-bottom: 20%;" onclick=" addToCartPrd()" > add to cart</button>
+
+
+                </div>
+               
          
               
 
@@ -136,8 +140,8 @@
     <hr class="m-5 ">
     <div class="d-flex justify-content-center ">
       <div class=" p-5  " style="width: 60%;">
-        <h2>❔ Preguntas y respuestas de clientes </h2>
-        <div class=" mt-4">
+        <h2>❔ Preguntas y respuestas</h2>
+        <div class=" mt-4" id="questionsId">
             <div class="border p-3 m-2 mt-3" style="border-radius: 5px;">
                 
                 <div class="">
@@ -157,7 +161,7 @@
                       <p class="ml-2">Respuesta: Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure voluptatum omnis perspiciatis molestias aspernatur cumque</p>
               </div>
           </div>
-           
+          <button type="button submit" class="btn btn-warning btn-lg mt-4" style="width: 100%;  margin-bottom: 20%;"  > Add to QA</button>
 
         </div>
     </div>
@@ -205,8 +209,36 @@
 
     
     </main>
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Launch demo modal
+    </button> -->
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+        
+                    <input class="col-12"type="text" name="" id="QAid" placeholder="Escribe tu pregunta" required>
+                    </div>
+                    <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                    <button type="button submit" class="btn btn-primary" data-dismiss="modal" onclick="addQA()">Save changes</button>
 
-    <!-- Bootstrap core JavaScript
+                
+
+            </div>
+        </div>
+        </div>
+    </div>
+        <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -2,7 +2,7 @@
 @id = c5O7tMsGoRKP2oy8u7w56
 
 
-@token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRoZWJlamFyYW5vIiwiZW1haWwiOiJiZWphcmFubzMyM0B0ZXN0LmNvbSIsImlhdCI6MTY1MjIyMDA4NiwiZXhwIjoxNjUyMjIyNDg2fQ.Okcp4F-FcBCW91dGl_TaEnOBdDMP5BvrzEM80WcRX-E"
+@token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRoZWJlamFyYW5vIiwiZW1haWwiOiJiZWphcmFubzMyM0B0ZXN0LmNvbSIsImlhdCI6MTY1MjIyNjY5NiwiZXhwIjoxNjUyMjI5MDk2fQ.4dT6Uu5W7vw9fs57aJB0QqRw5dfPsP5FdO7KWAlAeAQ"
   
 
 
@@ -26,16 +26,19 @@ Content-Type: application/json
 
 GET {{host}}/products?min=2000&max=3000
 
+
+###
+GET {{host}}/QA/zBJK3nBe6shzBWfku1TNf
 ###
 
-GET {{host}}/products/0SBKNeNTeVv9ZMgiU-VJI
+GET {{host}}/products/-0K4dQEE6PQ5mNROuViDr
 
 ###
 DELETE {{host}}/products/6264c4e7e24feb9ddb4a3d66
 
 ###
 
-PUT {{host}}/products/zBJK3nBe6shzBWfku1TNf
+PUT {{host}}/products/-0K4dQEE6PQ5mNROuViDr
 Content-Type: application/json
 
 {

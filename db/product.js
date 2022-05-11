@@ -54,7 +54,16 @@ let productsSchema= mongoose.Schema({
         type:String,
         required:true
     },
-    QA: String 
+    
+    QA:[{
+        pregunta:{
+            type:String
+        },
+        respuesta:{
+
+            type:String
+        }
+    }] 
 
 
 
@@ -73,7 +82,7 @@ async function saveProduct(){
         price:1,
         stock:1,
         category:"testing",
-        QA:""
+        QA:[]
     }
     let prodToSave= product(newProduct)
     let resp = await  prodToSave.save();
@@ -105,7 +114,7 @@ productsSchema.statics.getProducts=async (query)=>{
 productsSchema.statics.addProduct= async(newProduct)=>{
 
  newProduct.id=nanoid()
- newProduct.QA=""
+ newProduct.QA=[]
  let prodToSave= product(newProduct)
  let resp = await prodToSave.save()
  console.log(resp)
