@@ -6,7 +6,7 @@ const { wishlist } = require("./db/wishlist")
 const express = require("express")
 const fs = require("fs");
 const { query } = require("express");
-const port = process.env.PORT||3000;
+const port = process.env.PORT || 3000;
 const app = express()
 const { auth } = require("./middlewares/auth")
 const shortid = require("shortid");
@@ -43,10 +43,10 @@ app.post('/products', auth, async (req, res) => {
 
 
 })
-app.put('/username',auth,async(req,res)=>{
+app.put('/username', auth, async (req, res) => {
 
 
-    res.send({token:req.username})
+    res.send({ token: req.username })
 
 })
 
@@ -54,18 +54,18 @@ app.get('/products', async (req, res) => {
     console.log("--------Get--------")
     let products;
     //todo: Implement a regex for min and max 
-    let {name,category,min,max,id,owner}=req.query;
-    let dbQuery={}
-    let minMaxQuery={}
+    let { name, category, min, max, id, owner } = req.query;
+    let dbQuery = {}
+    let minMaxQuery = {}
 
 
 
-    if(owner){
+    if (owner) {
 
-            dbQuery.productOwner= owner
+        dbQuery.productOwner = owner
     }
-    if(id){
-        dbQuery.id=id
+    if (id) {
+        dbQuery.id = id
     }
     if (name) {
 
@@ -104,27 +104,23 @@ app.delete('/products/:id', async (req, res) => {
     } else { res.status(404).send({ error: "Notfound" }) }
 
 })
-app.get('/QA/:id',async (req,res)=>{
+app.get('/QA/:id', async (req, res) => {
 
-<<<<<<< HEAD
-app.get('/products/:id', async (req, res) => {
-=======
-    let id= req.params.id
+    let id = req.params.id
     let ret = await product.getProductById(id)
-    if(ret){
+    if (ret) {
 
 
         res.send(ret.QA)
     }
-    else{
+    else {
 
-        res.status(404).send({error:"Notfound"})
+        res.status(404).send({ error: "Notfound" })
         return
     }
 
 })
-app.get('/products/:id',async (req,res)=>{
->>>>>>> 1492fd1b16b037b6cd352a0fd036ee89d6f5214a
+app.get('/products/:id', async (req, res) => {
 
     let id = req.params.id
     let ret = await product.getProductById(id)
@@ -143,23 +139,13 @@ app.get('/products/:id',async (req,res)=>{
 
 app.put('/products/:id', async (req, res) => {
     console.log("------Put------")
-<<<<<<< HEAD
-    let { name, price, description, category, stock } = req.body;
-
+    let { name, price, descripcion, category, stock, image } = req.body;
+    console.log(req.body)
     // let productowner=headers.productowner //! Tenemos que validar en la base de datos que exista el product owner 
-    if (name && price && description && category && stock) {
+    if (name && price && descripcion && category && stock && image) {
 
         let productUpdated = req.body
         // productUpdated.productOwner=productowner
-=======
-    let{name,price,descripcion,category,stock,image}=req.body;
-    console.log(req.body)
-   // let productowner=headers.productowner //! Tenemos que validar en la base de datos que exista el product owner 
-    if(name&&price&&descripcion&&category&&stock&&image){
-      
-        let productUpdated=req.body
-       // productUpdated.productOwner=productowner
->>>>>>> 1492fd1b16b037b6cd352a0fd036ee89d6f5214a
 
 
         let ret = await product.updateProduct(req.params.id, productUpdated)
@@ -172,21 +158,12 @@ app.put('/products/:id', async (req, res) => {
             return
 
         }
-<<<<<<< HEAD
 
 
     }
 
-    res.status(404).send({ error: "Notfound" })
+    res.status(404).send({ error: "Error" })
 
-=======
-        
-        
-    }   
-    
-    res.status(404).send({error:"Error"})
- 
->>>>>>> 1492fd1b16b037b6cd352a0fd036ee89d6f5214a
 
 })
 
@@ -283,7 +260,7 @@ app.post('/users', async (req, res) => {
     let newUser = {};
     let { name, email, username, password, cpassword } = req.body;
 
-    let exUsuario = await User.getUsers({username:username});
+    let exUsuario = await User.getUsers({ username: username });
 
     if (name && email && username) {
         if (exUsuario == null) {
@@ -343,57 +320,51 @@ app.post('/cart', auth, async (req, res) => {
 
 })
 
-<<<<<<< HEAD
-app.put('/cart', auth, async (req, res) => {
+app.delete('/cart', auth, async (req, res) => {
 
-
-=======
-app.delete('/cart',auth,async(req,res)=>{
-
-    let query={username:req.username,email:req.email}
-    let {productID}=req.body;
+    let query = { username: req.username, email: req.email }
+    let { productID } = req.body;
     let user = await User.findUser(query)
     // console.log(user)
 
-    user=user[0]
+    user = user[0]
 
-    let cart=user.carrito
+    let cart = user.carrito
 
     let indx;
-    for(let i=0; i<cart.length; i++){
+    for (let i = 0; i < cart.length; i++) {
 
 
-        
-        if(productID==cart[i].producto){
 
-            indx=i;
+        if (productID == cart[i].producto) {
+
+            indx = i;
         }
 
 
     }
 
-    if(indx!=undefined){
+    if (indx != undefined) {
         console.log("producto  existe")
-        cart.splice(indx,1)
+        cart.splice(indx, 1)
 
 
         console.log(cart)
-        await  User.updateCart(user,cart)
+        await User.updateCart(user, cart)
         res.send(cart).status(202)
     }
-    else{
+    else {
 
         console.log("el producto no existe")
 
-        res.status(404).send({error: "no existe el producto"})
+        res.status(404).send({ error: "no existe el producto" })
     }
-    
+
 })
 
-app.put('/cart',auth,async(req,res)=>{
-    
-    
->>>>>>> 1492fd1b16b037b6cd352a0fd036ee89d6f5214a
+app.put('/cart', auth, async (req, res) => {
+
+
     // * Todos los productos que se le mandan a este metodo existen en la base de datos ya que son los mismos que se despliegan desde la interface inicial 
 
     // * Este metodo recibe un token dado por el usuario pada validar su login y tener sus datos 
@@ -451,47 +422,14 @@ app.put('/wishlist', auth, async (req, res) => {
     console.log(username)
 
 
-<<<<<<< HEAD
     let { productID } = req.body;
 
 
     wish = await wishlist.getList(username);
-=======
-    let {productID}=req.body;
-  
-      
-        wish= await wishlist.getList(username);
-        console.log("Wish desde el agregar",wish)
+    console.log("Wish desde el agregar", wish)
 
 
-        if(wish.length!=0){
-            wish=wish[0]
-            let exist=false;
-            wish=wish.list
-            console.log("inside the if ",wish)
-        
-        
-            
-            wish.map(prd=>{
-        
-        
-                if(prd.producto==productID){
-                    
-                    
-                    exist=true;
-                }
-        
-        
-        
-            })
-            if(!exist)wish.push({producto:productID})
-            console.log(wish)
-            await wishlist.addToList(username,wish)
->>>>>>> 1492fd1b16b037b6cd352a0fd036ee89d6f5214a
-
-
-
-    if (wish != []) {
+    if (wish.length != 0) {
         wish = wish[0]
         let exist = false;
         wish = wish.list
@@ -537,79 +475,67 @@ app.put('/wishlist', auth, async (req, res) => {
     ! Este metodo se hizo post pero funciona como  get ya que de otra manera no me deja mandar body en el fetch para mandar el token
     !Pienso solucionarlo despues con la info que encontre 
     Todo: https://stackoverflow.com/questions/48187482/pass-payload-in-get-request-react-fetch (solucion)
-
 */
-<<<<<<< HEAD
 app.post('/wishlist', auth, async (req, res) => {
+    console.log("Get que es post de la wish")
     let username = { username: req.username }
     let wish = await wishlist.getList(username);
+    if (wish.length != 0) {
 
-    wish = wish[0]
-    res.send(wish).status(202)
-=======
-app.post('/wishlist',auth,async(req,res)=>{
-    console.log("Get que es post de la wish")
-    let username={username:req.username}
-    let wish= await wishlist.getList(username);
-    if(wish.length!=0){
-
-        wish=wish[0]
+        wish = wish[0]
         res.send(wish).status(202)
     }
-    else{
+    else {
 
         res.send([]).status(202)
     }
-   
+
 })
 
-app.delete('/wishlist',auth,async(req,res)=>{
+app.delete('/wishlist', auth, async (req, res) => {
     console.log("------------------Delete  from wish ------------------")
-    let username={username:req.username}
-    
-    let {productID}=req.body;
+    let username = { username: req.username }
+
+    let { productID } = req.body;
     console.log(req.username)
 
-    let wish= await wishlist.getList(username);
+    let wish = await wishlist.getList(username);
 
-    wish=wish[0]
-    wish=wish.list;
+    wish = wish[0]
+    wish = wish.list;
     let indx;
-    for(let i=0; i<wish.length; i++){
+    for (let i = 0; i < wish.length; i++) {
 
 
-        
-        if(productID==wish[i].producto){
 
-            indx=i;
+        if (productID == wish[i].producto) {
+
+            indx = i;
         }
 
 
     }
 
-    if(indx!=undefined){
+    if (indx != undefined) {
         console.log("producto  existe")
-        wish.splice(indx,1)
-        
+        wish.splice(indx, 1)
+
 
         console.log(wish)
-        await wishlist.deleteToList({owner:req.username},wish)
+        await wishlist.deleteToList({ owner: req.username }, wish)
         res.send(wish).status(202)
     }
-    else{
+    else {
 
         console.log("el producto no existe")
 
-        res.status(404).send({error: "no existe el producto"})
+        res.status(404).send({ error: "no existe el producto" })
     }
-    
 
->>>>>>> 1492fd1b16b037b6cd352a0fd036ee89d6f5214a
+
 })
 
 
 app.listen(port, () => {
     console.log(`Running server at ${port}`)
 })
-
-
