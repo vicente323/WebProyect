@@ -42,14 +42,27 @@ app.post('/products',auth, async (req, res) => {
 
 
 })
+app.put('/username',auth,async(req,res)=>{
+
+
+    res.send({token:req.username})
+
+})
 
 app.get('/products', async (req, res) => {
     console.log("--------Get--------")
     let products;
     //todo: Implement a regex for min and max 
-    let {name,category,min,max,id}=req.query;
+    let {name,category,min,max,id,owner}=req.query;
     let dbQuery={}
     let minMaxQuery={}
+
+
+
+    if(owner){
+
+            dbQuery.productOwner= owner
+    }
     if(id){
         dbQuery.id=id
     }
@@ -421,10 +434,10 @@ app.put('/wishlist',auth,async(req,res)=>{
   
       
         wish= await wishlist.getList(username);
-        
+        console.log("Wish desde el agregar",wish)
 
 
-        if(wish!=[]){
+        if(wish.length!=0){
             wish=wish[0]
             let exist=false;
             wish=wish.list
@@ -473,18 +486,27 @@ app.put('/wishlist',auth,async(req,res)=>{
 
 */
 app.post('/wishlist',auth,async(req,res)=>{
+    console.log("Get que es post de la wish")
     let username={username:req.username}
     let wish= await wishlist.getList(username);
+    if(wish.length!=0){
 
-    wish=wish[0]
-    res.send(wish).status(202)
+        wish=wish[0]
+        res.send(wish).status(202)
+    }
+    else{
+
+        res.send([]).status(202)
+    }
+   
 })
 
 app.delete('/wishlist',auth,async(req,res)=>{
-    
-    let username={owner:req.username}
+    console.log("------------------Delete  from wish ------------------")
+    let username={username:req.username}
     
     let {productID}=req.body;
+    console.log(req.username)
 
     let wish= await wishlist.getList(username);
 
@@ -509,7 +531,7 @@ app.delete('/wishlist',auth,async(req,res)=>{
         
 
         console.log(wish)
-        await wishlist.deleteToList(username,wish)
+        await wishlist.deleteToList({owner:req.username},wish)
         res.send(wish).status(202)
     }
     else{

@@ -2,8 +2,19 @@
 @id = c5O7tMsGoRKP2oy8u7w56
 
 
-@token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRoZWJlamFyYW5vIiwiZW1haWwiOiJiZWphcmFubzMyM0B0ZXN0LmNvbSIsImlhdCI6MTY1MjIyNjY5NiwiZXhwIjoxNjUyMjI5MDk2fQ.4dT6Uu5W7vw9fs57aJB0QqRw5dfPsP5FdO7KWAlAeAQ"
+@token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRoZWJlamFyYW5vMiIsImVtYWlsIjoiYmVqYXJhbm8zMjMyQHRlc3QuY29tIiwiaWF0IjoxNjUyMjQ0MTU0LCJleHAiOjE2NTIyNDY1NTR9.X9AEYhPV_1K18XpEHH-cdqTORJw7dYPVJlHyr_hGWys"
   
+### para tener los usernamer
+
+PUT {{host}}/username
+Content-Type: application/json
+
+{
+ 
+    "token":{{token}}
+}
+###
+
 
 
 ### La idea es que el product owner sea el token 
@@ -32,6 +43,10 @@ GET {{host}}/QA/zBJK3nBe6shzBWfku1TNf
 ###
 
 GET {{host}}/products/-0K4dQEE6PQ5mNROuViDr
+
+### Ya se puede buscar por owner 
+
+GET {{host}}/products?owner=Thebejarano
 
 ###
 DELETE {{host}}/products/6264c4e7e24feb9ddb4a3d66
@@ -67,7 +82,7 @@ Content-Type: application/json
 
 {
     "token":{{token}},
-    "productID" :"5QYKUWxW69G7hiPy5UmHZ"
+    "productID" :"-0K4dQEE6PQ5mNROuViDr"
 
 
 }
@@ -93,7 +108,7 @@ Content-Type: application/json
 
 {   
     "token":  {{token}},
-    "productID" :"5QYKUWxW69G7hiPy5UmHZ"
+    "productID" :"-0K4dQEE6PQ5mNROuViDr"
     
     
 }
@@ -112,7 +127,7 @@ Content-Type: application/json
 
 {
     "pasword":"testpassword",
-    "username":"Thebejarano"
+    "username":"Thebejarano2"
 
 
 }
@@ -123,9 +138,9 @@ POST {{host}}/users
 Content-Type: application/json
 
  {
-    "name": "Vicente Test",
-    "username": "Thebejarano",
-    "email": "bejarano323@test.com",
+    "name": "Vicente Test 2",
+    "username": "Thebejarano2",
+    "email": "bejarano3232@test.com",
     "password": "testpassword"
   }
 

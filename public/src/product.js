@@ -174,20 +174,99 @@ async function addQA(){
     let id=sessionStorage.getItem("product")
     
     let res= await fetch('/products/'+id)
+    let pregunta=document.getElementById("QAid")
+    let prod = await res.json()
+    pregunta=pregunta.value;
+    console.log(prod)
+    let QAarray=prod.QA
+    console.log("pregunta:  ",pregunta)
+    let newQuesion={
 
-    console.log(await res.json())
+        pregunta:pregunta,
+        respuesta:""
+
+
+    }
+    QAarray.push(newQuesion)
+   
+
+    
+    let actuBody={name:prod.name,descripcion:prod.descripcion,category:prod.category,price:prod.price,stock:prod.stock,image:prod.image,QA:QAarray}
+    let act= fetch('/products/'+id,{
+        method:'PUT',
+        headers:{
+            "Content-Type":" application/json"
+        }, 
+        body:JSON.stringify(actuBody)
+
+
+
+    })
+
+    loadProduct()
+
+
+
 }
-async function loadQA(prod){
-    console.log(prod.QA)
-    let questionsCont=document.getElementById("questionsId")
-    if(prod.QA.length==0){
 
-        questionsCont.innerHTML='<h1 class="ml-5">No questions yet</h1   > <button type="button " class="btn btn-warning btn-lg mt-4" style="width: 100%;  margin-bottom: 20%;"  data-toggle="modal" data-target="#exampleModal"> add a question</button>'
+
+async function loadQA(prod){
+    console.log("funcion loadQA")
+    let questionsCont=document.getElementById("questionsId")
+   
+    if(prod.QA.length==0){
+        if(await validateLoginFromProd()){
+
+            questionsCont.innerHTML='<h1 class="ml-5">No questions yet</h1> <button type="button " class="btn btn-warning btn-lg mt-4" style="width: 100%;  margin-bottom: 20%;"  data-toggle="modal" data-target="#exampleModal"> add a question</button>'
+
+        }
+        else{
+            questionsCont.innerHTML='<h1 class="ml-5">No questions yet</h1>'
+        }
+        
         console.log("No questions yet")
     }
     else{
 
-        let inner=`  `
+        let preguntas=''
+        if(await validateLoginFromProd()){
+            for(let i=0; i<prod.QA.length; i++){
+
+                    preguntas=preguntas+`   <div class="border p-3 m-2 mt-3" style="border-radius: 5px;">
+                
+                    <div class="">
+                            <!--Answer question structure  -->
+                            <p>Pregunta: ${prod.QA[i].pregunta}</p>
+                            <hr>
+                            <p class="ml-2">Respuesta: ${prod.QA[i].respuesta}</p>
+                    </div>
+                </div> `
+
+
+            }
+            questionsCont.innerHTML=preguntas+'<button type="button " class="btn btn-warning btn-lg mt-4" style="width: 100%;  margin-bottom: 20%;"  data-toggle="modal" data-target="#exampleModal"> add a question</button>'
+
+        }
+        else{
+
+            for(let i=0; i<prod.QA.length; i++){
+
+                preguntas=preguntas+`   <div class="border p-3 m-2 mt-3" style="border-radius: 5px;">
+            
+                <div class="">
+                        <!--Answer question structure  -->
+                        <p>Pregunta: ${prod.QA[i].pregunta}</p>
+                        <hr>
+                        <p class="ml-2">Respuesta: ${prod.QA[i].respuesta}</p>
+                </div>
+            </div> `
+
+
+            }
+            questionsCont.innerHTML=preguntas
+        }
+
+        
 
 
 
@@ -233,7 +312,7 @@ async function loadProduct(){
     <hr>
     <h7 class="pt-2 ">Vendedor:</h7>
     <h7 class="pt-2 ">${current.productOwner}</h7>
-    
+    <h6>Categoria:  ${current.category}</h6>
     <h4 class="pt-2 mt-4 ">Descripcion:</h4>
     <h4 class="pt-2 ">${current.descripcion}</h4>
     

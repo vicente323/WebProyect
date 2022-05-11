@@ -1,5 +1,5 @@
 async function deleteWish(id){
-    event.preventDefault()
+    // event.preventDefault()
     
     let token =   localStorage.getItem('token')
     console.log("tried to delete",id)
@@ -14,13 +14,14 @@ async function deleteWish(id){
         headers:{
             "Content-Type":" application/json"
         },
-       body:JSON.stringify(body)
+        body:JSON.stringify(body)
+       
 
     })
-
+    await req.json()
     /*to show changes in the shopping cart*/
-    loadWishlist()
-
+   await loadWishlist()
+    // loadWishlist()
 }
 
 async function  loadWishlist(){
@@ -41,7 +42,7 @@ async function  loadWishlist(){
 
     console.table(wishlist.list)
     let inner=``
-     
+    let container=document.getElementById("wishCont")
     for(let i=0; i<wishlist.list.length; i++){
         
         
@@ -84,12 +85,12 @@ async function  loadWishlist(){
                         </tr>`
 
         }
-        let container=document.getElementById("wishCont")
-        container.innerHTML=inner
+        
+       
 
    
     }
-
+    container.innerHTML=inner
      
 }
 
