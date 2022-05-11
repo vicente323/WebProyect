@@ -43,13 +43,16 @@ usersSchema.statics.login=async(username)=>{
         return await User.find(filtro);
 }
 
-
 usersSchema.statics.getUsers = async (filtro, isAdmin) => {
     let project = { _id: 0, id: 1, name: 1, username: 1, email: 1 }
     let search = { $or: filtro }
     if (isAdmin)
         project.password = 1;
     return await User.find(filtro, project);
+}
+
+usersSchema.statics.existeUser = async (username)=>{
+    return await User.findOne({ username });
 }
 
 usersSchema.statics.getUser = async (id) => {

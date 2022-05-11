@@ -55,6 +55,28 @@ Content-Type: application/json
 ///////////////////////////////////////////////////////////////////////////////
 
 GET {{host}}/users
+Content-Type: application/json
+
+{
+    "username": "Humberto2"
+}
+
+###
+
+
+GET {{host}}/users
+
+
+###
+GET {{host}}/users?username=Humberto2
+
+###
+
+GET {{host}}/users/Humberto2
+
+###
+
+DELETE {{host}}/users/ssb4Uav2Np3NtUN_AQuhg
 
 ###
 
@@ -100,14 +122,39 @@ POST {{host}}/users
 Content-Type: application/json
 
  {
-    "name": "Humberto Peñuelas 6",
-    "username": "Humberto8",
+    "name": "Humberto Peñuelas",
+    "username": "Humberto2",
     "email": "humbertpal8@test.com",
     "password": "Amontillado",
     "cpassword": "Amontillado"
   }
 
 ### 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ### Los tokens de este metodo caducan por lo que hay que cambiarlo cada x tiempo 

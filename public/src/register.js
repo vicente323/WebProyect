@@ -18,7 +18,7 @@ async function guardarUsuario(event) {
     jsonNuser = JSON.stringify(newUser);
     console.log(jsonNuser);
 
-    let res = fetch('/users/',
+    let res = await fetch('/users',
         {
             method: 'POST',
             headers: {
@@ -28,9 +28,10 @@ async function guardarUsuario(event) {
         }
     );
 
-    let data = await res.json();
-    console.log('========================');
-
-    console.log(res);
-    console.log(data);
+    if (res.status == 201) {
+        window.location.replace("http://localhost:3100/MainPage.html");
+    }else{
+        alert(res.error)
+    }
 }
+
