@@ -162,7 +162,7 @@ async function addToCartButton(){
 
 
 
-        window.location.replace("http://localhost:3100/log.html");
+        window.location.replace("log.html");
 
     }
 
