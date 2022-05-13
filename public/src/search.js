@@ -205,8 +205,8 @@ async function  loadProducts(pagination){
                                         <span class="price">$${currentCunk[i].price}</span>
                                     </div> <!-- price-wrap.// -->
                                 </div>
-                                <a class="btn  btn-primary col-8 mt-2 text-light" onclick="addToCart('${currentCunk[i].id}')">Add to cart </a>	
-                                <span href="#" class="btn btn-danger ml-2 mt-2" onclick="addToWishList('${currentCunk[i].id}')">♥ </span>	
+                                <a class="btn  btn-primary col-8 mt-2 text-light" onclick="addToCart('${currentCunk[i].id}')" data-toggle="modal" data-target="#exampleModal" >Add to cart </a>	
+                                <span href="#" class="btn btn-danger ml-2 mt-2" onclick="addToWishList('${currentCunk[i].id}')" data-toggle="modal" data-target="#exampleModal2">♥ </span>	
                             </figcaption>
                         </figure>
                     </div>     
