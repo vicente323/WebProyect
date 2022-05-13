@@ -2,6 +2,7 @@
 
 const { product } = require("./db/product");
 const { User } = require("./db/User");
+const { Recibo } = require("./db/Recibos")
 const { wishlist } = require("./db/wishlist")
 const express = require("express")
 const fs = require("fs");
@@ -193,37 +194,24 @@ app.post('/login', async (req, res) => {
     let resp = await User.login(username);
     let user = resp[0]
 
-
-
-
-
     if (user != undefined) {
         if (await compareHash(pasword, user.password)) {
-
-
             let token = jwt.sign({ username: user.username, email: user.email }, firma, { expiresIn: 60 * 40 });
             console.log({ token })
             res.status(202).send({ token });
-
         }
         else {
-
             res.status(404).send({ error: "Username or password not valid" });
         }
-
-
     }
     else {
 
         res.status(404).send({ error: "Username or password not valid" });
     }
-
-
-
-
 })
 
 app.get('/users', async (req, res) => {
+    console.log("get user con y sin filtro");
     console.log(req.query);
     console.log(req.query.params);
     console.log(req.body);
@@ -233,26 +221,14 @@ app.get('/users', async (req, res) => {
     res.send(users);
 })
 
-app.get('/users/:id', async (req, res) => {
-    console.log(req.params.id);
-    let user = await User.getUser(req.params.id);
+app.post('/users', auth, async (req, res) => {
+    console.log("--------------------");
+    console.log(req.id);
+    let query = { username: req.username };
 
-    if (user) {
-        res.send(user)
-    } else {
-        res.status(404).send({ error: " no encontrado" })
-    }
-})
-
-app.delete('/users/:id', async (req, res) => {
-    console.log(req.params.id);
-    let user = await User.deleteUser(req.params.id);
-
-    if (user) {
-        res.send(user.username + " ha sido eliminado")
-    } else {
-        res.status(404).send({ error: " no encontrado" })
-    }
+    let { name, username } = req.query;
+    let users = await User.getUsers(query);
+    res.send(users);
 })
 
 app.post('/users', async (req, res) => {
@@ -282,23 +258,53 @@ app.post('/users', async (req, res) => {
     }
 })
 
+app.get('/users/:id', async (req, res) => {
+    console.log(req.params.id);
+    let user = await User.getUser(req.params.id);
+
+    if (user) {
+        res.send(user)
+    } else {
+        res.status(404).send({ error: " no encontrado" })
+    }
+})
+
+app.delete('/users/:id', async (req, res) => {
+    console.log(req.params.id);
+    let user = await User.deleteUser(req.params.id);
+
+    if (user) {
+        res.send(user.username + " ha sido eliminado")
+    } else {
+        res.status(404).send({ error: " no encontrado" })
+    }
+})
+
 app.put('/users/:id', async (req, res) => {
+    console.log("+++++++++++++++++++++++++++++++")
+    console.log(req.body);
+    console.log(req.params.id);
+    console.log("+++++++++++++++++++++++++++++");
 
     let user = await User.getUser(req.params.id);
+
     let { name, username, email, password } = req.body;
     if (user) {
         user.name = name ? name : user.name;
         user.username = username ? username : user.username;
         user.email = email ? email : user.email;
         user.password = password ? password : user.password;
-        let doc = await User.updateUser(user);
-        res.send(doc);
+        try {
+            let doc = await User.updateUser(user);
+            res.send(doc);
+        } catch (error) {
+            res.status(404).send({ error: "Ya existe ese nombre usuario" })
+        }
     } else {
         res.status(404).send({ error: "no existe" })
     }
 }
 )
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////
@@ -307,10 +313,8 @@ app.put('/users/:id', async (req, res) => {
 ////////////////
 ////////////////
 ////////////////
-////////////////(
+////////////////
 app.post('/cart', auth, async (req, res) => {
-
-
 
     let query = { username: req.username, email: req.email }
     let user = await User.findUser(query)
@@ -538,4 +542,68 @@ app.delete('/wishlist', auth, async (req, res) => {
 
 app.listen(port, () => {
     console.log(`Running server at ${port}`)
+})
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////
+////////////////
+////////////////                             Recibos
+////////////////
+////////////////
+////////////////
+////////////////
+
+app.post('/recibos', auth, async (req, res) => {
+    console.log("|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|")
+    console.log("|                             |");
+    console.log("| ejecutando post de Recibos  |");
+    console.log("|                             |");
+    console.log("|_____________________________|");
+
+    let query = { username: req.username };
+    console.log(req.body);
+
+    if (req.body.hasOwnProperty('total')) {
+        console.log(req.body);
+        console.log("|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|")
+        console.log("|       creando recibo        |");
+        console.log("|              y              |");
+        console.log("|      vaciando carrito       |");
+        console.log("|_____________________________|");
+        console.log(query);
+        let user = await User.getUsers(query);
+        console.log(user);
+
+        let recibo = {
+            owner: req.username,
+            list: user[0].carrito,
+            total: req.body.total,
+            address : req.body.address
+        }
+        console.log(recibo);
+
+        await Recibo.saveRecibo(recibo);
+        let doc2 = await User.updateCart(user[0], []);
+        res.status(201).send(doc2);
+    } else if(req.body.hasOwnProperty('last')){
+        console.log("|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|")
+        console.log("|         Obteniendo          |");
+        console.log("|        ultimo recibo        |");
+        console.log("|           ( ͡❛ ͜ʖ ͡❛)          |");
+        console.log("|_____________________________|");
+        let doc = await Recibo.getLastRecibos({ username: req.username });
+        console.log(doc);
+        res.send(doc);
+    }else {
+        console.log("|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|")
+        console.log("|         Obteniendo          |");
+        console.log("|       recibos de user       |");
+        console.log("|       ¯\\_( ͡❛ ‿ ͡❛)_/¯        |");
+        console.log("|_____________________________|");
+        console.log(req.body.id);
+        let doc = await Recibo.getRecibos({ username: req.username });
+        res.send(doc);
+
+    }
 })

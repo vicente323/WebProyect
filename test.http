@@ -1,9 +1,8 @@
-@host=http://localhost:3100
+@host=http://localhost:3000
 @id = c5O7tMsGoRKP2oy8u7w56
 
 
-@token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRoZWJlamFyYW5vMiIsImVtYWlsIjoiYmVqYXJhbm8zMjMyQHRlc3QuY29tIiwiaWF0IjoxNjUyMjQ0MTU0LCJleHAiOjE2NTIyNDY1NTR9.X9AEYhPV_1K18XpEHH-cdqTORJw7dYPVJlHyr_hGWys"
-  
+@token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ikh1bWJlcnRvMSIsImVtYWlsIjoiaHVtYmVydG81QG1haWwuY29tIiwiaWF0IjoxNjUyNDI4OTEzLCJleHAiOjE2NTI0MzEzMTN9.r43wL8cwLNkcap0187Zj6M4WX5K7sKzznfRGmvx57f0"
 ### para tener los usernamer
 
 PUT {{host}}/username
@@ -42,7 +41,7 @@ GET {{host}}/products?min=2000&max=3000
 GET {{host}}/QA/zBJK3nBe6shzBWfku1TNf
 ###
 
-GET {{host}}/products/-0K4dQEE6PQ5mNROuViDr
+GET {{host}}/products/IAh0ALTrfxfs7uwg9WObK
 
 ### Ya se puede buscar por owner 
 
@@ -58,20 +57,12 @@ Content-Type: application/json
 
 {
  
-<<<<<<< HEAD
-    "name":"Nuevo Funko 3.0",
-    "description":"Nuevo pubto 2.0",
-    "category":"Juguetillos",
-    "price":290,
-    "stock":25
-=======
     "name":"Funko deadpool ",
     "descripcion":"Funko de deadpool Nuevo",
     "category":"Funko",
     "price":499,
     "stock":2,
     "image":"https://cdn140.picsart.com/238899976006202.jpg?type=webp&to=crop&r=256"
->>>>>>> 1492fd1b16b037b6cd352a0fd036ee89d6f5214a
 
   
 }
@@ -85,7 +76,7 @@ GET {{host}}/users
 Content-Type: application/json
 
 {
-    "username": "Humberto2"
+    "username": "Humberto1"
 }
 
 ###
@@ -156,8 +147,8 @@ POST {{host}}/login
 Content-Type: application/json
 
 {
-    "pasword":"testpassword",
-    "username":"Thebejarano2"
+    "pasword":"Amontillado",
+    "username":"Humberto1"
 
 
 }
@@ -168,21 +159,21 @@ POST {{host}}/users
 Content-Type: application/json
 
  {
-<<<<<<< HEAD
     "name": "Humberto Peñuelas",
     "username": "Humberto2",
     "email": "humbertpal8@test.com",
     "password": "Amontillado",
     "cpassword": "Amontillado"
-=======
-    "name": "Vicente Test 2",
-    "username": "Thebejarano2",
-    "email": "bejarano3232@test.com",
-    "password": "testpassword"
->>>>>>> 1492fd1b16b037b6cd352a0fd036ee89d6f5214a
   }
 
 ### 
+
+POST {{host}}/users
+Content-Type: application/json
+
+ {
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ikh1bWJlcnRvMSIsImVtYWlsIjoiaHVtYmVydG81QG1haWwuY29tIiwiaWF0IjoxNjUyNDcyNjMzLCJleHAiOjE2NTI0NzUwMzN9.LupCKc0-gF69zXR74ctpR2AbpuI-cQUq9XPbsjyP87k"
+  }
 
 
 
@@ -246,8 +237,37 @@ Content-Type: application/json
     "token":  {{token}}
 }
 
+###
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+///
+///                               Pruebas Recibos
+///
 
+POST {{host}}/recibos
+Content-Type: application/json
 
+{
+    "token":{{token}},
+    "total": 150
+}
 
+####
+POST {{host}}/recibos
+Content-Type: application/json
 
+{
+    "token":{{token}},
+    "last":true
+}
 
+####
+
+POST {{host}}/recibos
+Content-Type: application/json
+
+{
+    "token":{{token}}
+}
+
+####

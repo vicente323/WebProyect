@@ -44,7 +44,7 @@ usersSchema.statics.login=async(username)=>{
 }
 
 usersSchema.statics.getUsers = async (filtro, isAdmin) => {
-    let project = { _id: 0, id: 1, name: 1, username: 1, email: 1 }
+    let project = { _id: 0, id: 1, name: 1, username: 1, email: 1 ,carrito:1}
     let search = { $or: filtro }
     if (isAdmin)
         project.password = 1;
@@ -68,6 +68,7 @@ usersSchema.statics.updateCart = async (user,cart) => {
 usersSchema.statics.updateUser = async (user,passwordChange=false) => {
     return await User.findOneAndUpdate({ id: user.id }, { $set: user }, { new: true })
 }
+
 usersSchema.statics.findUser= async (query)=>{
 
     let user = await User.find(query);
@@ -80,7 +81,6 @@ usersSchema.statics.saveUser = async (user) => {
     user.carrito = [];
     let userToSave = User(user);
     console.log(userToSave);
-
     return await userToSave.save();
 }
 
