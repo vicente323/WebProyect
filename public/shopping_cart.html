@@ -218,47 +218,51 @@
 <body onload="MainLoad()">
     <header>
       
-        <nav class="navbar navbar-expand-sm navbar-dark bg-primary col-12 p-3 border-radius  " style="border-radius: 2px;">
-          <a class="navbar-brand pl-4 pr-4 " href="./MainPage.html"><img src="https://mundofuntastic.com/img/tienda-oficial-funko.png" alt="" style="height: 40px"></a>
+		<nav class="navbar navbar-expand-sm navbar-dark bg-primary col-12 p-3 border-radius  " style="border-radius: 2px;">
+		  <a class="navbar-brand pl-4 pr-4 " href="./MainPage.html"><img src="https://mundofuntastic.com/img/tienda-oficial-funko.png" alt="" style="height: 40px"></a>
    
-          
-          <form class="form-inline my-2 my-lg-0 col-6 d-flex">
-              <input class="form-control  w-75" type="text" placeholder="Encuentra los mejores precios " required>
-              <button class="btn btn-outline-success   ml-2 pt-1  border-white text-white " type="submit">Buscar</button>
-          </form>
+		  
+		  <form class="form-inline my-2 my-lg-0 col-6 d-flex">
+			  <input class="form-control  w-75" type="text" placeholder="Encuentra los mejores precios " id="Search">
+			  <button class="btn btn-outline-success   ml-2 pt-1  border-white text-white " type="submit "  onclick="runSearch()"><a href="./search.html" class="text-light">Buscar</a></button>
+		  </form>
   
   
   
   
-          <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-              aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
+		  <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+			  aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"></span>
+		  </button>
   
-          <div class="collapse navbar-collapse" id="collapsibleNavId  ">
-              <ul class="navbar-nav  ml-5 mt-2 mt-lg-0 ml-auto "  id="collapsibleNavIdContainer">
-                
-                
-                  <li class="nav-item dropdown ">
-                      <a class="nav-link dropdown-toggle  pr-4" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi cuenta</a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownId">
-                          <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#modelId">Ingresar</a>
-                          <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#modelId2" >Registro</a>
-                          <hr>
-                          <a class="dropdown-item" href="orders.html">Mis pedidos</a>
-  
-                      </div>
-                  </li>
-                  <li class="nav-item active pr-4">
-                      <a class="nav-link" href="shopping_cart.html"><i class="fas fa-shopping-cart      "></i> <span class="sr-only">(current)</span>2</a>
-                  </li>
-              </ul>
-              
-          </div>
-      </nav>
-          
-
-    </header>
+		  <div class="collapse navbar-collapse" >
+			  <ul class="navbar-nav  ml-5 mt-2 mt-lg-0 ml-auto " id="collapsibleNavIdContainer">
+				
+				
+				  <li class="nav-item dropdown ">
+					  <a class="nav-link dropdown-toggle  pr-4" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi cuenta</a>
+					  <div class="dropdown-menu" aria-labelledby="dropdownId">
+						  <a class="dropdown-item" href="./log.html"  >Ingresar</a>
+						  <a class="dropdown-item" href="./register.html"  >Registro</a>
+						  
+						  
+						  <hr>
+						  <a class="dropdown-item" href="./createProduct.html">publicar producto</a>
+						  <a class="dropdown-item" href="./wishlist.html"   >wishlist</a>
+						  <a class="dropdown-item" href="orders.html">Mis pedidos</a>
+						  <a class="dropdown-item" href="./profile.html">Perfil</a>
+					  </div>
+				  </li>
+				  <li class="nav-item active pr-4">
+					  <a class="nav-link" href="shopping_cart.html" id="cartID"><i class="fas fa-shopping-cart      "></i> <span class="sr-only" >(current)</span></a>
+				  </li>
+			  </ul>
+			  
+		  </div>
+	  </nav>
+		
+	  
+	  </header>
 
 
     <div class="card">

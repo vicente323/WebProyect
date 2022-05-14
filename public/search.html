@@ -114,8 +114,8 @@
    
 		  
 		  <form class="form-inline my-2 my-lg-0 col-6 d-flex">
-			  <input class="form-control  w-75" type="text" placeholder="Encuentra los mejores precios " required>
-			  <button class="btn btn-outline-success   ml-2 pt-1  border-white text-white " type="submit " ><a href="./search.html" class="text-light">Buscar</a></button>
+			  <input class="form-control  w-75" type="text" placeholder="Encuentra los mejores precios " id="Search">
+			  <button class="btn btn-outline-success   ml-2 pt-1  border-white text-white " type="submit "  onclick="runSearch()"><a href="./search.html" class="text-light">Buscar</a></button>
 		  </form>
   
   
@@ -172,17 +172,17 @@
 				<label class="custom-control custom-checkbox">
 				  <input type="checkbox" checked=""  class="custom-control-input">
 				  <div class="custom-control-label">Funko
-				  	<b class="badge badge-pill badge-light float-right">1000</b>  </div>
+				   </div> 
 				</label>
 				<label class="custom-control custom-checkbox">
 				  <input type="checkbox"  class="custom-control-input">
 				  <div class="custom-control-label">Keychain
-				  	<b class="badge badge-pill badge-light float-right">150</b>  </div>
+				    </div>
 				</label>
 				<label class="custom-control custom-checkbox">
 				  <input type="checkbox"  class="custom-control-input">
 				  <div class="custom-control-label">Others
-				  	<b class="badge badge-pill badge-light float-right">35</b> </div>
+				  	</div>
 				</label>
 				
 	</div> <!-- card-body.// -->
@@ -413,5 +413,47 @@
 	</main>
 	</div>
 </div>
+	<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+	Launch demo modal
+  </button>
+   -->
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Agregado a tu carrito</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+	
+	
+	  </div>
+	</div>
+  </div>
+
+  <!-- Modal 2 -->
+
+  <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Agregado a tu wishlist</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+	
+	
+	  </div>
+	</div>
+  </div>
+
+
+
+
+
 </body>
 </html>
