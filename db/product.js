@@ -117,6 +117,21 @@ productsSchema.statics.addProduct = async (newProduct) => {
 
 
 }
+productsSchema.statics.updateProduct=async(id,updatedProduct)=>{
+
+
+    let resp = await product.findOneAndUpdate({id:id},updatedProduct)
+    return resp
+}
+
+
+
+// async function deleteFromDb(){
+
+//     await product.findOneAndDelete({id:"vJNqOzI2iMZ6Zaf5o7tRq"})
+// }
+//deleteFromDb()
+// saveProduct()
 
 
 productsSchema.statics.getProductById=async (id)=>{
@@ -136,4 +151,6 @@ productsSchema.statics.deletePoduct= async(id)=>{
 
 const product = mongoose.model("Products", productsSchema)
 
+
 module.exports = { product }
+
