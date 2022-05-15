@@ -119,7 +119,7 @@ async function comprar() {
             })
             let doc = (await res.json())
             console.log(doc);
-            window.location.replace("http://localhost:3000/OrderConfirmation.html");
+            window.location.replace("OrderConfirmation.html");
         } else {
             alert("Favor de llenar todas las casillas");
         }
