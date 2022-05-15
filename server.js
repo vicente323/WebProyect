@@ -27,7 +27,7 @@ app.post('/products', auth, async (req, res) => {
 
     if (name && price && descripcion && category && stock && image) {
 
-        let prodToadd = { name: name, productOwner: req.username, price: price, stock: stock, category: category, descripcion: descripcion, image: image }
+        let prodToadd = { name: name, productOwner: req.username, price: price, stock: stock, category: category, descripcion: descripcion, image: image, QA:[] }
 
 
 

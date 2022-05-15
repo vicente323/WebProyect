@@ -24,7 +24,7 @@ async function createProduct(){
 
 
     }
-    let body={name:name,descripcion:desc,price:price,stock:stock,image:image,token:token,category:cat}
+    let body={name:name,descripcion:desc,price:price,stock:stock,image:image,token:token,category:cat,QA:[]}
     let res = await fetch('/products',{
 
         method:'POST',

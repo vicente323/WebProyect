@@ -109,7 +109,7 @@ productsSchema.statics.getProducts=async (query)=>{
 productsSchema.statics.addProduct = async (newProduct) => {
 
     newProduct.id = nanoid()
-    newProduct.QA = ""
+    // newProduct.QA = []
     let prodToSave = product(newProduct)
     let resp = await prodToSave.save()
     return resp;
