@@ -11,10 +11,6 @@ async function loginToPage(){
     let username=document.getElementById("usr")
     pasword=pasword.value
     username=username.value
-
-
-    
-
     
     console.log(pasword,username)
     let res= await fetch('/login',
@@ -26,14 +22,13 @@ async function loginToPage(){
         body: JSON.stringify({pasword, username})
     }
 
-
-
     )
 
     res = await res.json()
     console.log(res)
     
     localStorage.setItem('token',res.token)
+    
 
     if(res.error){
 
@@ -47,12 +42,6 @@ async function loginToPage(){
 
 
     }
-
-
-
-
-    
-
 }
 
 

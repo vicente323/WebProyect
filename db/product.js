@@ -1,23 +1,20 @@
-const {mongoose}=require("./mongo-db-connect")
-const {nanoid}= require("nanoid")
+const { mongoose } = require("./mongo-db-connect")
+const { nanoid } = require("nanoid")
 
 
 //* definition of products schema
-let productsSchema= mongoose.Schema({
+let productsSchema = mongoose.Schema({
     //TODO Agregar descipcion a los productos
-    id:{
-        
-        type:String,
-        required:true,
-        unique:true
+    id: {
+
+        type: String,
+        required: true,
+        unique: true
 
     },
-    productOwner:{
-        type:String,
-        required:true,
-       
-
-
+    productOwner: {
+        type: String,
+        required: true,
 
     },
     descripcion:{
@@ -28,16 +25,16 @@ let productsSchema= mongoose.Schema({
         type:String,
         required:true
     },
-    price:{
+    price: {
 
-        type:Number,
+        type: Number,
         min: 1,
         max: 999999,
         required: true
     },
-    stock:{
-        
-        type:Number,
+    stock: {
+
+        type: Number,
         min: 1,
         max: 999999,
         required: true
@@ -70,11 +67,9 @@ let productsSchema= mongoose.Schema({
 })
 //* Mediante product podemos modificar el esquema, agregar o quitar cosas.
 
+async function saveProduct() {
 
 
-async function saveProduct(){
-    
-    
     let newProduct = {
         id:nanoid(),
         name:"TestProduct0",
@@ -84,23 +79,23 @@ async function saveProduct(){
         category:"testing",
         QA:[]
     }
-    let prodToSave= product(newProduct)
-    let resp = await  prodToSave.save();
+    let prodToSave = product(newProduct)
+    let resp = await prodToSave.save();
     console.log(resp);
 
 }
 
-async function findProducts(query){
+async function findProducts(query) {
 
 
- /*   
-    * empty query means find all
-    * query structure Example: {name:"TestProduct1"}
-    * We can also use regex as well
-    * The method <schema>.find(query) retunrs an array of objects 
-    * we can show certain atributes sending as second argument {query},{<atribute>:(0 or 1)} 0 = off and 1 = on
-*/     
-    let products = await  product.find({},{name:1})
+    /*   
+       * empty query means find all
+       * query structure Example: {name:"TestProduct1"}
+       * We can also use regex as well
+       * The method <schema>.find(query) retunrs an array of objects 
+       * we can show certain atributes sending as second argument {query},{<atribute>:(0 or 1)} 0 = off and 1 = on
+   */
+    let products = await product.find({}, { name: 1 })
     console.log(products)
 }
 // ! add db methods here
@@ -108,17 +103,17 @@ async function findProducts(query){
 
 productsSchema.statics.getProducts=async (query)=>{
     //* query is an object 
-    return await  product.find( query)
+    return await product.find(query)
 
 }
-productsSchema.statics.addProduct= async(newProduct)=>{
+productsSchema.statics.addProduct = async (newProduct) => {
 
- newProduct.id=nanoid()
- newProduct.QA=[]
- let prodToSave= product(newProduct)
- let resp = await prodToSave.save()
- console.log(resp)
- 
+    newProduct.id = nanoid()
+    newProduct.QA = ""
+    let prodToSave = product(newProduct)
+    let resp = await prodToSave.save()
+    return resp;
+    
 
 
 }
@@ -138,20 +133,7 @@ productsSchema.statics.deletePoduct= async(id)=>{
     let resp = await product.findByIdAndDelete(id)
     return resp
 }
-productsSchema.statics.updateProduct=async(id,updatedProduct)=>{
-  
 
-    let resp = await product.findOneAndUpdate({id:id},updatedProduct)
-    return resp
-}
+const product = mongoose.model("Products", productsSchema)
 
-const product = mongoose.model("Products",productsSchema)
-
-// async function deleteFromDb(){
-
-//     await product.findOneAndDelete({id:"vJNqOzI2iMZ6Zaf5o7tRq"})
-// }
-//deleteFromDb()
-// saveProduct()
-
-module.exports={product}
+module.exports = { product }

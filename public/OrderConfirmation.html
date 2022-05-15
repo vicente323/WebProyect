@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+
+    <script src="./src/orderConfirmation.js"></script>
+
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -142,22 +146,22 @@ header .active .fa-check {
                 <div class="card">
                     <div class="text-left logo p-2 px-5"> <img src="data:image/png;base64,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" width="50"> </div>
                     <div class="invoice p-5">
-                        <h5>Your order Confirmed!</h5> <span class="font-weight-bold d-block mt-4">Hello, Joshua</span> <span>You order has been confirmed and will be shipped in next two days!</span>
+                        <h5>Your order Confirmed!</h5> <div id="usuario"></div>
                         <div class="payment border-top mt-3 mb-3 border-bottom table-responsive">
                             <table class="table table-borderless">
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <div class="py-2"> <span class="d-block text-muted">Order Date</span> <span>18 Jan,2022</span> </div>
+                                            <div class="py-2"> <span class="d-block text-muted">Order Date</span><id id="dateOrder"></id> </div>
                                         </td>
-                                        <td>
-                                            <div class="py-2"> <span class="d-block text-muted">Order No</span> <span>MT12332345</span> </div>
-                                        </td>
+                                       <!--  <td>
+                                            <div class="py-2"> <span class="d-block text-muted">Order No</span> div# <span>MT12332345</span> </div>
+                                        </td> -->
                                         <td>
                                             <div class="py-2"> <span class="d-block text-muted">Payment</span> <span><img src="https://img.icons8.com/color/48/000000/mastercard.png" width="20" /></span> </div>
                                         </td>
                                         <td>
-                                            <div class="py-2"> <span class="d-block text-muted">Shiping Address</span> <span>Santa Laura 2665, Guadalajara,Mexico</span> </div>
+                                            <div class="py-2"> <span class="d-block text-muted">Shiping Address</span> <div id="shpAd"> </div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -166,7 +170,9 @@ header .active .fa-check {
                         <div class="product border-bottom table-responsive">
                             <table class="table table-borderless">
                                 <tbody>
-                                    <tr>
+
+                                    <div id="psOrds"></div>
+                                   <!--  <tr>
                                         <td width="20%"> <img src="https://images.stockx.com/images/Funko-Pop-Disney-Pixar-Monsters-Sulley-Flocked-Amazon-Exclusive-Figure-1156.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1631821802" width="90"> </td>
                                         <td width="60%"> <span class="font-weight-bold">Sulley</span>
                                             <div class="product-qty"> <span class="d-block">Quantity:2</span> <span>Type:Flocked,Funko Shop</span> </div>
@@ -174,8 +180,8 @@ header .active .fa-check {
                                         <td width="20%">
                                             <div class="text-right"> <span class="font-weight-bold">$550.00</span> </div>
                                         </td>
-                                    </tr>
-                                    <tr>
+                                    </tr> -->
+                                    <!-- <tr>
                                         <td width="20%"> <img src="https://m.media-amazon.com/images/I/510ltbUUtJS._AC_.jpg" width="70"> </td>
                                         <td width="60%"> <span class="font-weight-bold">Flash</span>
                                             <div class="product-qty"> <span class="d-block">Quantity:1</span> <span>Type:Glow,Funko Shop</span> </div>
@@ -183,7 +189,7 @@ header .active .fa-check {
                                         <td width="20%">
                                             <div class="text-right"> <span class="font-weight-bold">$600.00</span> </div>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
@@ -191,6 +197,10 @@ header .active .fa-check {
                             <div class="col-md-5">
                                 <table class="table table-borderless">
                                     <tbody class="totals">
+                                        <div id="cotizacion"></div>
+
+
+<!-- 
                                         <tr>
                                             <td>
                                                 <div class="text-left"> <span class="text-muted">Subtotal</span> </div>
@@ -230,7 +240,9 @@ header .active .fa-check {
                                             <td>
                                                 <div class="text-right"> <span class="font-weight-bold">$1880.00</span> </div>
                                             </td>
-                                        </tr>
+                                        </tr> -->
+
+
                                     </tbody>
                                 </table>
                             </div>

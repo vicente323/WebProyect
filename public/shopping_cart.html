@@ -10,16 +10,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="https://i.pinimg.com/originals/20/eb/5c/20eb5c46712c53be1ec5de2ca765ad24.jpg">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+        integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        body{
-     
-            background:white;
+        body {
+
+            background: white;
             background-image: url(wavelog2.svg);
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -184,7 +185,7 @@
             box-shadow: none;
             color: white;
             -webkit-box-shadow: none;
-            
+
             transition: none
         }
 
@@ -210,13 +211,14 @@
 
         .navbar {
             margin-bottom: 50px;
-           
+
         }
     </style>
 </head>
 
 <body onload="MainLoad()">
     <header>
+
       
 		<nav class="navbar navbar-expand-sm navbar-dark bg-primary col-12 p-3 border-radius  " style="border-radius: 2px;">
 		  <a class="navbar-brand pl-4 pr-4 " href="./MainPage.html"><img src="https://mundofuntastic.com/img/tienda-oficial-funko.png" alt="" style="height: 40px"></a>
@@ -263,12 +265,62 @@
 		
 	  
 	  </header>
+<!-- =======
 
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary col-12 p-3 border-radius  "
+            style="border-radius: 2px;">
+            <a class="navbar-brand pl-4 pr-4 " href="./MainPage.html"><img
+                    src="https://mundofuntastic.com/img/tienda-oficial-funko.png" alt="" style="height: 40px"></a>
+
+
+            <form class="form-inline my-2 my-lg-0 col-6 d-flex">
+                <input class="form-control  w-75" type="text" placeholder="Encuentra los mejores precios " required>
+                <button class="btn btn-outline-success   ml-2 pt-1  border-white text-white "
+                    type="submit">Buscar</button>
+            </form>
+
+
+
+
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsibleNavId  ">
+                <ul class="navbar-nav  ml-5 mt-2 mt-lg-0 ml-auto " id="collapsibleNavIdContainer">
+
+
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle  pr-4" href="#" id="dropdownId" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Mi cuenta</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modelId">Ingresar</a>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modelId2">Registro</a>
+                            <hr>
+                            <a class="dropdown-item" href="orders.html">Mis pedidos</a>
+
+                        </div>
+                    </li>
+                    <li class="nav-item active pr-4">
+                        <a class="nav-link" href="shopping_cart.html"><i class="fas fa-shopping-cart      "></i> <span
+                                class="sr-only">(current)</span>2</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+
+    </header>
+>>>>>>> humberto
+ -->
 
     <div class="card">
         <div class="row">
             <div class="col-md-8 cart" id="productList">
-            
+
             </div>
             <div class="col-md-4 summary">
                 <div>
@@ -276,26 +328,29 @@
                 </div>
                 <hr>
                 <div class="row" id="itemCount">
-                    <div class="col" style="padding-left:0;" >ITEMS: 0</div>
+                    <div class="col" style="padding-left:0;">ITEMS: 0</div>
                     <div class="col text-right">&dollar; 132.00</div>
                 </div>
                 <form>
-                    <p>Envio</p> <select>
-                        <option class="text-muted">Envio estandar $50</option>
-                        <option class="text-muted">Envio express $100</option>
+                    <p>Envio</p>
+                    <select id="precioEnvio" onchange="loadCart()">
+                        <option value=50 class="text-muted">Envio estandar $50</option>
+                        <option value=100 class="text-muted">Envio express $100</option>
                     </select>
-                    
+
                 </form>
                 <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                     <div class="col">TOTAL A PAGAR</div>
-                    <div class="col text-right">&dollar; 137.00</div>
-                </div> <button class="btn-2"><a href="./payment.html" class="text-light">Checkout</a></button>
+                    <div id="tots"></div>
+                    <!--   <div class="col text-right">&dollar; 137.00</div> -->
+                </div>
+                <button class="btn-2" id="btnCheckOut"><a href="./payment.html" class="text-light">Checkout</a></button>
             </div>
         </div>
     </div>
 
 
-    
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

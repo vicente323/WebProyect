@@ -43,13 +43,16 @@ usersSchema.statics.login=async(username)=>{
         return await User.find(filtro);
 }
 
-
 usersSchema.statics.getUsers = async (filtro, isAdmin) => {
-    let project = { _id: 0, id: 1, name: 1, username: 1, email: 1 }
+    let project = { _id: 0, id: 1, name: 1, username: 1, email: 1 ,carrito:1}
     let search = { $or: filtro }
     if (isAdmin)
         project.password = 1;
     return await User.find(filtro, project);
+}
+
+usersSchema.statics.existeUser = async (username)=>{
+    return await User.findOne({ username });
 }
 
 usersSchema.statics.getUser = async (id) => {
@@ -65,6 +68,7 @@ usersSchema.statics.updateCart = async (user,cart) => {
 usersSchema.statics.updateUser = async (user,passwordChange=false) => {
     return await User.findOneAndUpdate({ id: user.id }, { $set: user }, { new: true })
 }
+
 usersSchema.statics.findUser= async (query)=>{
 
     let user = await User.find(query);
@@ -77,47 +81,10 @@ usersSchema.statics.saveUser = async (user) => {
     user.carrito = [];
     let userToSave = User(user);
     console.log(userToSave);
-
     return await userToSave.save();
 }
 
 const User = mongoose.model("User", usersSchema);
 
-////////////////////////////////////////////////////////////////////////////////////////////
-async function saveUser() {
-    let newUser = {
-        id: nanoid(),
-        name: "elTercero",
-        username: "TercerUser",
-        email: "Tercer@TextDecoderStream.com",
-        password: "123456"
-    }
-
-    let userToSave = User(newUser);
-
-    
-    console.log(resp);
-
-}
-
-//saveUser();
-
-async function getUsers() {
-    let users = await User.find();
-    console.log(users);
-    let users2 = await User.find({}, { _id: 0, id: 1, name: 1 });
-    console.log(users2);
-}
-
-//getUsers();
-
-function updatePasswordAllUsers() {
-    let users = User.find();
-    users.forEach(async usr => {
-        usr.password = await getHash(usr.password);
-        User.updateUser({ id: usr.id }, { password: usr.password });
-    })
-}
-
-//updatePasswordAllUsers();
 module.exports = { User }
+

@@ -27,17 +27,15 @@
 */
 // `  `
 
-async function loadCart(){
+async function loadCart() {
 
-
-
-    let token =   localStorage.getItem('token')
+    let token = localStorage.getItem('token')
 
     //* por cuestiones de tiempo no hice un  metodo para validar el token asi que use cualquiera que usara el middleware auth
-    if(token!=undefined){
-         let total=0;
-         let items=0;
-         let inner=`<div class="title">
+    if (token != undefined) {
+        let total = 0;
+        let items = 0;
+        let inner = `<div class="title">
          <div class="row">
              <div class="col">
                  <h4><b>Mi carrito</b></h4>
@@ -47,44 +45,46 @@ async function loadCart(){
          </div> `
 
 
-     
-    
-        let res = await fetch('/cart',{
-    
-    
-            method:'POST',
-            headers:{
-                "Content-Type":" application/json"
+        let res = await fetch('/cart', {
+
+
+            method: 'POST',
+            headers: {
+                "Content-Type": " application/json"
             },
-            body: JSON.stringify({token})
-         })
+            body: JSON.stringify({ token })
+        })
 
-         let prdcts=(await res.json())
+        let prdcts = (await res.json())
+
+        console.log(prdcts.length)
+
+        if (prdcts.length == 0) {
+            document.getElementById("btnCheckOut").style.display = "none";
+        } else {
+            document.getElementById("btnCheckOut").style.display = "block";
+        }
+
+        for (let i = 0; i < prdcts.length; i++) {
+            items=items+prdcts[i].cantidad;
+            console.log(prdcts[i])
 
 
-         console.log(prdcts.length)
+            let prd = await fetch(`/products/${prdcts[i].producto}`, {
 
+                method: 'GET'
 
-         for(let i=0; i<prdcts.length; i++){
-               items++;
-               console.log(prdcts[i])
+            })
+            let current = await prd.json()
+            if (current.image == undefined) {
+                current.image = "https://www.collinsdictionary.com/images/full/banana_64728013.jpg"
+            }
 
+            if (current.descripcion == undefined) {
+                current.descripcion = "not description"
+            }
 
-               let prd=  await fetch(`/products/${prdcts[i].producto}`,{
-
-                        method:'GET'
-
-               })
-               let current=await prd.json()
-               if(current.image==undefined){
-                   current.image="https://www.collinsdictionary.com/images/full/banana_64728013.jpg"
-               }
-
-               if(current.descripcion==undefined){
-                current.descripcion="not description"
-               }
-
-               inner= inner+` <div class="row border-top border-bottom">
+            inner = inner + ` <div class="row border-top border-bottom">
                <div class="row main align-items-center">
                    <div class="col-2">
                        <img class="img-fluid"
@@ -94,30 +94,54 @@ async function loadCart(){
                        <div class="row text-muted">${current.name}</div>
                        <div class="row">${current.descripcion}</div>
                    </div>
-                   <div class="col"> 
-                   </div>
+                   <div class="col"> ${prdcts[i].cantidad}</div>
+                   <div class="col">&dollar; ${current.price} <span class="close" onclick="deleteFromCart('${prdcts[i].producto}')">&#10005;</span></div></div>
 
-
-
-
-                       <div class="col">&dollar; ${current.price} <span class="close" onclick="deleteFromCart('${prdcts[i].producto}')">&#10005;</span></div>
                    </div>
                </div>`
-               total=total+current.price
+            total = total + current.price*prdcts[i].cantidad;
 
-         }
+        }
+
+        localStorage.setItem("subtotal", total);
 
 
-         let cont= document.getElementById("productList")
-         let itemCount=document.getElementById("itemCount")
-         cont.innerHTML=inner;
-         itemCount.innerHTML=`<div class="row" id="itemCount">
+        let cont = document.getElementById("productList")
+        let itemCount = document.getElementById("itemCount")
+        cont.innerHTML = inner;
+        itemCount.innerHTML = `<div class="row" id="itemCount">
                                     <div class="" style="padding-left:0;" >productos   : ${items}    </div> <div class=" text-right ml-5">    &dollar;Total : ${total}</div>
                               </div>`
-    }    
-  
 
 
+        var select = document.getElementById('precioEnvio');
+        var option = select.options[select.selectedIndex];
+
+
+        console.log("+++++++++++////////////////////++++++++++++++++");
+        console.log(option.value);
+        var valor = Number(option.value);
+
+        localStorage.setItem('envio', valor);
+
+        console.log(typeof valor);
+        console.log("+++++++++++////////////////////++++++++++++++++");
+
+
+
+
+
+        let totalCompra = document.getElementById("tots")
+        totalCompra.innerHTML = `<div class="col text-right">&dollar; ${total + valor}</div>`
+
+
+
+
+
+
+
+
+    }
 }
 
 /*
@@ -128,24 +152,23 @@ async function loadCart(){
 
 */
 
-
-async function deleteFromCart(id){
+async function deleteFromCart(id) {
     event.preventDefault()
-    
-    let token =   localStorage.getItem('token')
-    console.log("tried to delete",id)
-    let body= {   
-        token:token,
-        productID :id
-        
+
+    let token = localStorage.getItem('token')
+    console.log("tried to delete", id)
+    let body = {
+        token: token,
+        productID: id
+
     }
-    let req= await fetch('/cart',{
-        
-        method:'DELETE',
-        headers:{
-            "Content-Type":" application/json"
+    let req = await fetch('/cart', {
+
+        method: 'DELETE',
+        headers: {
+            "Content-Type": " application/json"
         },
-       body:JSON.stringify(body)
+        body: JSON.stringify(body)
 
     })
 
@@ -155,3 +178,7 @@ async function deleteFromCart(id){
 }
 
 loadCart()
+
+async function totYenv() {
+    localStorage.setItem('envio') = document.getElementById();
+}
